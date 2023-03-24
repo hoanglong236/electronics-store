@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Common\Constants;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Log;
 
 class HomeService
@@ -36,5 +38,25 @@ class HomeService
         }
 
         return $categoryTree;
+    }
+
+    // TODO: handle this
+    public function getPopularProducts()
+    {
+        return Product::where([
+            'delete_flag' => false,
+        ])->inRandomOrder()->limit(Constants::POPULAR_PRODUCT_COUNT)->get();
+    }
+
+    public function getFeaturedProducts() {
+        return Product::where([
+            'delete_flag' => false,
+        ])->inRandomOrder()->limit(Constants::POPULAR_PRODUCT_COUNT)->get();
+    }
+
+    public function getLatestProducts() {
+        return Product::where([
+            'delete_flag' => false,
+        ])->orderBy('created_at')->limit(Constants::POPULAR_PRODUCT_COUNT)->get();
     }
 }
