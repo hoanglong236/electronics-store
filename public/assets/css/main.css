@@ -1,0 +1,24 @@
+.product-image {
+    width: 250px;
+    height: 300px;
+}
+
+.aa-product-catg li:hover figure .aa-product-img {
+    background-color: transparent;
+}
+
+.tab-pane.fade.in.active {
+    text-align: center;
+    padding-bottom: 35px;
+}
+
+.banner-image--medium {
+    padding: 100px 50px;
+}
+
+#aa-promo .aa-promo-area .aa-promo-banner:hover img {
+    width: 110%;
+    height: 110%;
+    margin-left: -5%;
+    margin-top: -5%;
+}

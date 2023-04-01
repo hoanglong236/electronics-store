@@ -15,12 +15,11 @@
                             <!-- Popular products -->
                             <div class="tab-pane fade in active" id="popular">
                                 <ul class="aa-product-catg aa-popular-slider">
-                                    <!-- start single product item -->
                                     @foreach ($data['popularProducts'] as $popularProduct)
                                         <li>
                                             <figure>
                                                 <a class="aa-product-img" href="#">
-                                                    <img src="{{ asset('assets/img/man/polo-shirt-2.png') }}"
+                                                    <img height="250" src="{{ asset('storage/' . $popularProduct->main_image_path) }}"
                                                         alt="polo shirt img">
                                                 </a>
                                                 <a class="aa-add-card-btn"href="#">
@@ -76,12 +75,11 @@
                             <!-- Featured products -->
                             <div class="tab-pane fade" id="featured">
                                 <ul class="aa-product-catg aa-featured-slider">
-                                    <!-- start single product item -->
                                     @foreach ($data['featuredProducts'] as $featuredProduct)
                                         <li>
                                             <figure>
                                                 <a class="aa-product-img" href="#">
-                                                    <img src="{{ asset('assets/img/man/polo-shirt-2.png') }}"
+                                                    <img height="250" src="{{ asset('storage/' . $featuredProduct->main_image_path) }}"
                                                         alt="polo shirt img">
                                                 </a>
                                                 <a class="aa-add-card-btn"href="#">
@@ -141,7 +139,7 @@
                                         <li>
                                             <figure>
                                                 <a class="aa-product-img" href="#">
-                                                    <img src="{{ asset('assets/img/man/polo-shirt-2.png') }}"
+                                                    <img height="250" src="{{ asset('storage/' . $latestProduct->main_image_path) }}"
                                                         alt="polo shirt img">
                                                 </a>
                                                 <a class="aa-add-card-btn"href="#">

@@ -33,6 +33,8 @@
 
     <!-- Main style sheet -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/base.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 
     <!-- Google Font -->
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -51,29 +53,17 @@
     {{-- Menu section --}}
     @include('shared.components.menu-section')
 
-    {{-- Slider section --}}
-    @include('shared.components.slider-section')
-
-    {{-- Promo section --}}
-    @include('shared.components.promo-section')
-
-    {{-- Products section --}}
-    @include('shared.components.products-section')
-
-    {{-- <!-- banner section --> --}}
-    @include('shared.components.banner-section')
-
-    {{-- <!-- popular section --> --}}
-    @include('shared.components.popular-section')
+    @section('body')
+    @show
 
     {{-- <!-- Support section --> --}}
     @include('shared.components.support-section')
 
     {{-- <!-- Testimonial --> --}}
-    @include('shared.components.testimonial-section')
+    {{-- @include('shared.components.testimonial-section') --}}
 
     {{-- <!-- Latest Blog --> --}}
-    @include('shared.components.latest-blog-section')
+    {{-- @include('shared.components.latest-blog-section') --}}
 
     {{-- <!-- Client Brand --> --}}
     @include('shared.components.client-brand-section')
