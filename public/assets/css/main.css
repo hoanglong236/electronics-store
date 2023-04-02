@@ -115,7 +115,7 @@ a.product-card__link {
     justify-content: space-between;
 }
 
-.header-logo-wrapper {
+.header-logo {
     padding-top: 10px;
     width: 100%;
     display: inline-flex;

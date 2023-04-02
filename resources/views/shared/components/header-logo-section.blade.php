@@ -1,4 +1,4 @@
-<div class="header-logo-wrapper">
+<div class="header-logo">
     <a class="header-logo-link" href="index.html">
         <div class="header-logo-container">
             <span class="logo-icon fa fa-shopping-cart"></span>
