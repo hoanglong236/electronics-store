@@ -118,8 +118,9 @@ a.product-card__link {
 .main-logo-wrapper {
     padding-top: 10px;
     width: 100%;
-    display: flex;
+    display: inline-flex;
     justify-content: center;
+    align-items: center;
     padding-bottom: 10px;
 }
 
