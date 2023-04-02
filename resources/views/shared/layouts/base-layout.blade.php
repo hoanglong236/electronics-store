@@ -12,6 +12,7 @@
 
     <!-- Bootstrap -->
     <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/bootstrap-spacer.css') }}" rel="stylesheet">
 
     <!-- SmartMenus jQuery Bootstrap Addon CSS -->
     <link href="{{ asset('assets/css/jquery.smartmenus.bootstrap.css') }}" rel="stylesheet">
@@ -42,41 +43,7 @@
 </head>
 
 <body>
-    @include('shared.components.loading-modal')
-
-    {{-- Scroll to top button --}}
-    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
-
-    {{-- Header --}}
-    @include('shared.components.header')
-
-    {{-- Menu section --}}
-    @include('shared.components.menu-section')
-
-    @section('body')
-    @show
-
-    {{-- <!-- Support section --> --}}
-    @include('shared.components.support-section')
-
-    {{-- <!-- Testimonial --> --}}
-    {{-- @include('shared.components.testimonial-section') --}}
-
-    {{-- <!-- Latest Blog --> --}}
-    {{-- @include('shared.components.latest-blog-section') --}}
-
-    {{-- <!-- Client Brand --> --}}
-    @include('shared.components.client-brand-section')
-
-    {{-- <!-- Subscribe section --> --}}
-    @include('shared.components.subscribe-section')
-
-    {{-- <!-- footer --> --}}
-    @include('shared.components.footer')
-
-    <!-- Login Modal -->
-    @include('shared.components.login-modal')
-
+    @yield('body-content')
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

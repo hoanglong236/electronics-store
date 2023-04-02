@@ -4,7 +4,15 @@
     --primary-color: #ff6666;
     --text-color: #333;
     --product-price-color: #f67034;
-    --product-card-bg: #fff;
+    --white-color: #fff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
 }
 
 body {
@@ -18,4 +26,55 @@ h4,
 h5,
 h6 {
     font-family: 'Roboto', sans-serif;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: transparent;
+    outline-offset: unset;
+}
+
+.form-title {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.form-title h4 {
+    font-weight: 400;
+    font-size: 1.6rem;
+}
+
+.form-label {
+    margin-bottom: 0.25rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.action-btn {
+    font-size: 1.6rem;
+    line-height: 2rem;
+    color: var(--white-color);
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.action-btn:hover {
+    color: var(--primary-color);
+    background-color: var(--white-color);
 }
