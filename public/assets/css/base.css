@@ -1,17 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;600;700&display=swap');
 
 :root {
     --primary-color: #ff6666;
-    --bodyBack: #ffeaed;
     --text-color: #333;
     --product-price-color: #f67034;
     --product-card-bg: #fff;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto', sans-serif;;
+    font-family: 'Roboto', sans-serif !important;
 }

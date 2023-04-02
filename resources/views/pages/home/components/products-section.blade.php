@@ -17,7 +17,7 @@
                             <div class="tab-content">
                                 @foreach ($data['topCategories'] as $index => $category)
                                     <div @class(['tab-pane fade', 'in active' => $index === 0]) id="{{ $category->slug }}">
-                                        @include('pages.home.components.products-category', [
+                                        @include('pages.home.components.products-list', [
                                             'products' => $data['productsOfTopCategories'][$category->id],
                                         ])
                                         <a class="aa-browse-btn" href="#">
