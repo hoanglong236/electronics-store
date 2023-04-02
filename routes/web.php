@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,5 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/login', [CustomerController::class, 'login'])->name('customer.login');
+Route::get('/register', [CustomerController::class, 'register'])->name('customer.register');

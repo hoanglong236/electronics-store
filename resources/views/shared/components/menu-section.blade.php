@@ -50,7 +50,6 @@
                     <!-- Left nav -->
                     {!! renderCategoryNavbar($data['categoryTrees']) !!}
                 </div>
-                <!--/.nav-collapse -->
             </div>
         </div>
     </div>
