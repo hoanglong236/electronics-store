@@ -2,20 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CommonService;
 use App\Services\HomeService;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    private $commonService;
     private $homeService;
 
-    public function __construct() {
+    public function __construct()
+    {
+        $this->commonService = new CommonService();
         $this->homeService = new HomeService();
     }
 
-    public function index() {
+    public function index()
+    {
         $data['pageTitle'] = 'Home page';
-        $data['categoryTrees'] = $this->homeService->getCategoryTrees();
+        $data['categoryTrees'] = $this->commonService->getCategoryTrees();
 
         $data['popularProducts'] = $this->homeService->getPopularProducts();
         $data['featuredProducts'] = $this->homeService->getFeaturedProducts();
