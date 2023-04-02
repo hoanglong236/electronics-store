@@ -51,8 +51,11 @@
 }
 
 .product-card:hover {
-    transform: translateY(-6px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+}
+
+a.product-card__link {
+    color: var(--text-color);
 }
 
 .product-card__image-wrapper {
