@@ -7,7 +7,7 @@
                 <div class="auth-form-container">
                     <div class="auth-form-area">
                         <div class="auth-form-wrapper">
-                            @include('shared.components.main-logo-section')
+                            @include('shared.components.header-logo-section')
                             <div class="auth-form-title">
                                 <h4>REGISTER ACCOUNT</h4>
                             </div>
