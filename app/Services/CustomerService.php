@@ -30,5 +30,6 @@ class CustomerService
     {
         Auth::logout();
         Session::invalidate();
+        Session::regenerateToken();
     }
 }

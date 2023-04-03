@@ -224,3 +224,31 @@ a.header-logo-link {
 .external-link a:hover {
     color: var(--primary-color);
 }
+
+.header-top-right {
+    float: right;
+}
+
+.header-top-right .header-top-nav-right {
+    display: inline-block;
+    text-align: right;
+}
+
+.header-top-right .header-top-nav-right>li {
+    display: inline-block;
+    text-align: right;
+    border-left: 1px solid #ddd;
+}
+
+.header-top-right .header-top-nav-right>li>a {
+    display: inline-block;
+    color: var(--text-color);
+    font-size: 1.4rem;
+    padding: 5px 8px;
+}
+
+@media (max-width: 320px) {
+    .header-top-right .header-top-nav-right>li>a {
+        padding: 5px 2px;
+    }
+}

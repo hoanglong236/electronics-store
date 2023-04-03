@@ -36,7 +36,7 @@ class CustomerController extends Controller
         }
 
         Session::flash(Constants::ACTION_ERROR, Constants::LOGIN_DETAIL_INVALID);
-        return redirect()->action([CustomerController::class, 'login']);
+        return redirect()->action([CustomerController::class, 'login'])->withInput();
     }
 
     public function register()
