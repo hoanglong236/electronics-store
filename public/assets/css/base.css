@@ -5,6 +5,9 @@
     --text-color: #333;
     --product-price-color: #f67034;
     --white-color: #fff;
+
+    --product-card-gap: 30px;
+    --product-card-width: 220px;
 }
 
 * {
