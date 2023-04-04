@@ -28,7 +28,7 @@ class RegisterRequest extends FormRequest
             'phone' => 'required',
             'gender' => 'required|boolean',
             'email' => [
-                'required|email|max:64',
+                'required', 'email', 'max:64',
                 Rule::unique('customers', 'email')->where('delete_flag', false)
             ],
             'password' => ['required', Password::min(8)],

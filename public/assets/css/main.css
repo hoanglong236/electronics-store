@@ -158,6 +158,7 @@ a.header-logo-link {
     border: 1px solid var(--text-color);
     border-radius: 5px;
     padding: 20px;
+    max-width: 480px;
 }
 
 .header-search-bar {
