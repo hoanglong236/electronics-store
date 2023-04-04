@@ -1,5 +1,5 @@
 <header id="aa-header">
-    <!-- start header top  -->
+    <!-- Start header top  -->
     <div class="aa-header-top">
         <div class="container">
             <div class="row">
@@ -9,9 +9,8 @@
             </div>
         </div>
     </div>
-    <!-- / header top  -->
 
-    <!-- start header bottom  -->
+    <!-- Start header bottom  -->
     <div class="aa-header-bottom">
         <div class="container">
             <div class="row">
@@ -21,5 +20,4 @@
             </div>
         </div>
     </div>
-    <!-- / header bottom  -->
 </header>

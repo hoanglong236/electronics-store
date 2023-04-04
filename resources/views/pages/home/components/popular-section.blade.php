@@ -14,7 +14,7 @@
                         <div class="tab-content">
                             <!-- Popular products -->
                             <div class="tab-pane fade in active" id="popular">
-                                @include('pages.home.components.products-list', [
+                                @include('shared.components.products-list', [
                                     'products' => $data['popularProducts'],
                                 ])
                                 <a class="aa-browse-btn" href="#">
@@ -25,7 +25,7 @@
 
                             <!-- Featured products -->
                             <div class="tab-pane fade" id="featured">
-                                @include('pages.home.components.products-list', [
+                                @include('shared.components.products-list', [
                                     'products' => $data['featuredProducts'],
                                 ])
                                 <a class="aa-browse-btn" href="#">
@@ -36,7 +36,7 @@
 
                             <!-- Latest products -->
                             <div class="tab-pane fade" id="latest">
-                                @include('pages.home.components.products-list', [
+                                @include('shared.components.products-list', [
                                     'products' => $data['latestProducts'],
                                 ])
                                 <a class="aa-browse-btn" href="#">

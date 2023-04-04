@@ -295,3 +295,37 @@ a.header-cart-link {
         padding: 5px 2px;
     }
 }
+
+.paginator {
+    display: inline;
+    float: left;
+    text-align: center;
+    width: 100%;
+}
+
+.paginator .pagination {
+    border: 1px solid #ccc;
+}
+
+.paginator .pagination li a,
+.paginator .pagination li span {
+    color: var(--primary-color);
+    background-color: var(--white-color);
+    border: none;
+    margin-left: 0px;
+}
+
+.paginator .pagination li a[disabled] {
+    pointer-events: none;
+    color: gray;
+}
+
+.paginator .pagination li a:hover,
+.paginator .pagination li span:hover {
+    text-decoration: underline;
+}
+
+.paginator .pagination li a.paginator-current-link {
+    margin-left: 5px;
+    margin-right: 5px;
+}
