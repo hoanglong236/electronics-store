@@ -44,8 +44,9 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-menu__item">
-                                <a class="dropdown-menu__item-link" href="{{ route('customer.logout') }}"
-                                    onclick="event.preventDefault(); $('#logoutForm').submit();">My Account</a>
+                                <a class="dropdown-menu__item-link" href="{{ route('customer.account.info') }}">
+                                    My Account
+                                </a>
                             </li>
                             <li class="dropdown-menu__item">
                                 <a class="dropdown-menu__item-link" href="{{ route('customer.logout') }}"

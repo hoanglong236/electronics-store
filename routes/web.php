@@ -18,13 +18,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
-Route::get('/{categorySlug}', [ProductController::class, 'findByCategorySlug'])->name(
-    'product.findBy.categorySlug'
-);
-Route::get('/search', [ProductController::class, 'search'])->name(
-    'product.search'
-);
-
 Route::middleware([RedirectIfAuthenticated::class])->group(function () {
     Route::get('/login', [CustomerController::class, 'login'])->name('customer.login');
     Route::post('/login-handler', [CustomerController::class, 'loginHandler'])->name(
@@ -40,7 +33,14 @@ Route::middleware([RedirectIfAuthenticated::class])->group(function () {
 Route::middleware('auth:customer')->group(function () {
     Route::post('/logout', [CustomerController::class, 'logout'])->name('customer.logout');
 
-
-    Route::group(['prefix' => '/category'], function () {
-    });
+    Route::get('/account-info', [CustomerController::class, 'showAccountInfo'])->name(
+        'customer.account.info'
+    );
 });
+
+Route::get('/search', [ProductController::class, 'search'])->name(
+    'product.search'
+);
+Route::get('/{categorySlug}', [ProductController::class, 'findByCategorySlug'])->name(
+    'product.findBy.categorySlug'
+);

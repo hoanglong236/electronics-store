@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Customer;
+use App\Models\CustomerAddress;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -23,7 +24,12 @@ class CustomerService
 
     public function login($loginProperties)
     {
-        return Auth::guard('customer')->attempt($loginProperties);
+        return Auth::guard('customer')->attempt([
+            'email' => $loginProperties['email'],
+            'password' => Hash::make($loginProperties['password']),
+            'disable_flag' => false,
+            'delete_flag' => false,
+        ]);
     }
 
     public function logout()
@@ -31,5 +37,10 @@ class CustomerService
         Auth::logout();
         Session::invalidate();
         Session::regenerateToken();
+    }
+
+    public function getCustomerAddresses($customerId)
+    {
+        return CustomerAddress::where(['customer_id' => $customerId])->get();
     }
 }

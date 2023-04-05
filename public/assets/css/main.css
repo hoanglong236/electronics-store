@@ -373,3 +373,9 @@ a.header-cart-link {
     height: 300px;
     object-fit: cover;
 }
+
+#customer-info {
+    display: inline;
+    float: left;
+    width: 100%;
+}

@@ -13,8 +13,9 @@
     function renderCategoryTree($categoryTree)
     {
         $liElement = '<li>';
+        $routeURL = route('product.findBy.categorySlug', $categoryTree['slug']);
 
-        $linkElement = '<a href="#">' . $categoryTree['name'];
+        $linkElement = '<a href="' . $routeURL . '">' . $categoryTree['name'];
         if (count($categoryTree['children']) === 0) {
             $linkElement .= '</a>';
             $liElement .= $linkElement . '</li>';

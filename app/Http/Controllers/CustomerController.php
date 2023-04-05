@@ -5,16 +5,20 @@ namespace App\Http\Controllers;
 use App\Common\Constants;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Services\CommonService;
 use App\Services\CustomerService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CustomerController extends Controller
 {
+    private $commonService;
     private $customerService;
 
     public function __construct()
     {
+        $this->commonService = new CommonService();
         $this->customerService = new CustomerService();
     }
 
@@ -62,5 +66,16 @@ class CustomerController extends Controller
 
         Session::flash(Constants::ACTION_SUCCESS, Constants::LOGOUT_SUCCESS);
         return redirect()->action([CustomerController::class, 'login']);
+    }
+
+    public function showAccountInfo()
+    {
+        $customer = Auth::guard('customer')->user();
+        $data = [
+            'pageTitle' => 'Customer Account Information',
+            'categoryTrees' => $this->commonService->getCategoryTrees(),
+            'customerAddresses' => $this->customerService->getCustomerAddresses($customer->id),
+        ];
+        return view('pages.account.account-info-page', ['data' => $data]);
     }
 }
