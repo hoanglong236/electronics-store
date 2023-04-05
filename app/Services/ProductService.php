@@ -16,12 +16,34 @@ class ProductService
             ->select('products.*')
             ->where([
                 'products.delete_flag' => false,
+                'categories.delete_flag' => false,
                 'categories.slug' => $categorySlug,
             ])
             ->paginate(Constants::ITEMS_PER_PRODUCTS_PAGE);
     }
 
+    public function findProductBrandsByCategorySlug($categorySlug)
+    {
+        return DB::table('products')
+            ->join('categories', 'categories.id', '=', 'products.category_id')
+            ->join('brands', 'brands.id', '=', 'products.brand_id')
+            ->distinct()
+            ->select('brands.*')
+            ->where([
+                'products.delete_flag' => false,
+                'categories.delete_flag' => false,
+                'categories.slug' => $categorySlug,
+                'brands.delete_flag' => false,
+            ])
+            ->get();
+    }
+
     public function searchProducts()
     {
+    }
+
+    public function getBestSellerProducts($productCount)
+    {
+        return Product::where(['delete_flag' => false])->limit($productCount)->get();
     }
 }

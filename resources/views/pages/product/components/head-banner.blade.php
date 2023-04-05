@@ -1,14 +1,9 @@
 <section id="aa-catg-head-banner">
-    <img src="{{ asset('assets/img/fashion/fashion-header-bg-8.jpg') }}" alt="fashion img">
-    <div class="aa-catg-head-banner-area">
-      <div class="container">
-       <div class="aa-catg-head-banner-content">
-         <h2>Fashion</h2>
-         <ol class="breadcrumb">
-           <li><a href="index.html">Home</a></li>
-           <li class="active">Women</li>
-         </ol>
-       </div>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img class="head-banner-image" src="{{ asset('assets/img/samsung-banner.jpg') }}" alt="fashion img">
+            </div>
+        </div>
     </div>
-   </section>
+</section>

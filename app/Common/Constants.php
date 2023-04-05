@@ -17,7 +17,9 @@ class Constants
     const REGISTER_SUCCESS = 'Register successfully.';
     const LOGIN_DETAIL_INVALID = 'Please enter valid login details.';
 
-    const ITEMS_PER_PRODUCTS_PAGE = 12;
+    const ITEMS_PER_PRODUCTS_PAGE = 9;
+
+    const BEST_SELLER_PRODUCTS_SIDEBAR_COUNT = 3;
 
     private function __construct()
     {
