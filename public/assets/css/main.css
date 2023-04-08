@@ -600,3 +600,7 @@ a.header-cart-link {
     margin: 10px;
 }
 
+.orders-table tbody tr td {
+    font-size: 1.4rem;
+    vertical-align: middle;
+}

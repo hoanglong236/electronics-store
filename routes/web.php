@@ -37,6 +37,10 @@ Route::middleware('auth:customer')->group(function () {
     Route::get('/account-info', [CustomerController::class, 'showInfo'])->name(
         'customer.info'
     );
+
+    Route::get('/orders', [CustomerController::class, 'showOrders'])->name(
+        'customer.orders'
+    );
 });
 
 Route::get('/search', [ProductController::class, 'search'])->name(

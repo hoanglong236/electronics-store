@@ -5,12 +5,12 @@
         <div class="container mt-2">
             <div class="row">
                 <div class="col-md-4">
-                    @include('pages.account.components.customer-info-table', [
+                    @include('pages.customer.components.customer-info-table', [
                         'customer' => Auth::guard('customer')->user(),
                     ])
                 </div>
                 <div class="col-md-8">
-                    @include('pages.account.components.customer-address-table', [
+                    @include('pages.customer.components.customer-address-table', [
                         'customerAddresses' => $data['customerAddresses'],
                     ])
                 </div>
