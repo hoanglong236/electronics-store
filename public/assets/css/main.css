@@ -416,8 +416,8 @@ a.header-cart-link {
 }
 
 .product-view-slider-wrapper .product-view-slider {
-    margin-left: -18px;
-    margin-right: -18px;
+    margin-left: -10px;
+    margin-right: -10px;
 }
 
 .product-view-slider li img {
@@ -546,4 +546,35 @@ a.header-cart-link {
 
 .action-button-wrapper a:first-child {
     flex: 1;
+}
+
+.product-details-content {
+    margin: 0 auto;
+    width: 86%;
+}
+
+.box-warranty-info {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 10px 10px 0;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.item-warranty-info {
+    display: flex;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.item-warranty-info .icon {
+    width: 20px;
+    margin-right: 6px;
+}
+
+.item-warranty-info .icon img {
+    width: 20px;
+    height: 20px;
 }
