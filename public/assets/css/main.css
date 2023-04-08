@@ -578,3 +578,25 @@ a.header-cart-link {
     width: 20px;
     height: 20px;
 }
+
+.products-related-wrapper {
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+.products-related-title {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.products-related-slider .slick-next,
+.products-related-slider .slick-prev {
+    top: -65px;
+}
+
+.products-related-slider .product-card {
+    margin: 10px;
+}
+

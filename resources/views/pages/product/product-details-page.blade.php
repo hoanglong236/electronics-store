@@ -2,7 +2,7 @@
 
 @section('body-main-content')
     <section id="aa-product-details">
-        <div class="container">
+        <div class="container mb-4">
             <div class="row">
                 <div class="col-md-12">
                     <div class="aa-product-details-area">

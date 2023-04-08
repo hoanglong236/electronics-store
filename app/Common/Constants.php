@@ -21,7 +21,7 @@ class Constants
 
     const BEST_SELLER_PRODUCTS_SIDEBAR_COUNT = 3;
 
-    const RELATED_PRODUCTS_COUNT = 6;
+    const RELATED_PRODUCTS_COUNT = 8;
 
     private function __construct()
     {
