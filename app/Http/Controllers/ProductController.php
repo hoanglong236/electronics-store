@@ -39,4 +39,16 @@ class ProductController extends Controller
             'sorterOptions' => ProductSorterConstants::toArray(),
         ];
     }
+
+    public function showDetails($productSlug)
+    {
+        $product = $this->productService->findProductBySlug($productSlug);
+        $data = [
+            'pageTitle' => $product->name,
+            'categoryTrees' => $this->commonService->getCategoryTrees(),
+            'product' => $product,
+            'productImages' => $this->productService->getProductImagesByProductId($product->id),
+        ];
+        return view('pages.product.product-details-page', ['data' => $data]);
+    }
 }

@@ -41,6 +41,9 @@ Route::middleware('auth:customer')->group(function () {
 Route::get('/search', [ProductController::class, 'search'])->name(
     'product.search'
 );
+Route::get('/{productSlug}/details', [ProductController::class, 'showDetails'])->name(
+    'product.details'
+);
 Route::get('/{categorySlug}', [ProductController::class, 'findByCategorySlug'])->name(
     'product.findBy.categorySlug'
 );

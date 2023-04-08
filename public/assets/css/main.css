@@ -379,3 +379,29 @@ a.header-cart-link {
     float: left;
     width: 100%;
 }
+
+.action-btn {
+    font-size: 1.6rem;
+    line-height: 2rem;
+    border: 1px solid var(--primary-color);
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+.action-btn:hover {
+    color: var(--primary-color);
+    background-color: var(--white-color);
+}
+
+.action-outline-btn {
+    font-size: 1.6rem;
+    line-height: 2rem;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    background-color: var(--white-color);
+}
+
+.action-outline-btn:hover {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}

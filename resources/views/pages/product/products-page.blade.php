@@ -10,7 +10,7 @@
                     @include('pages.product.components.product-filter-nav', [
                         'brands' => $data['brands'],
                         'sorterOptions' => $data['sorterOptions'],
-                        'bestSellerProducts' => $data['bestSellerProducts']
+                        'bestSellerProducts' => $data['bestSellerProducts'],
                     ])
                 </div>
                 <div class="col-md-9">

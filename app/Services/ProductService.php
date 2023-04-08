@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Common\Constants;
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -45,5 +46,13 @@ class ProductService
     public function getBestSellerProducts($productCount)
     {
         return Product::where(['delete_flag' => false])->limit($productCount)->get();
+    }
+
+    public function findProductBySlug($productSlug) {
+        return Product::where(['delete_flag' => false, 'slug' => $productSlug])->first();
+    }
+
+    public function getProductImagesByProductId($productId) {
+        return ProductImage::where('product_id', $productId)->get();
     }
 }
