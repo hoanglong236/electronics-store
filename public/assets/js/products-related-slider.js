@@ -1,8 +1,8 @@
-jQuery(".product-view-slider").slick({
+jQuery(".products-related-slider").slick({
     dots: false,
     infinite: false,
     speed: 300,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     responsive: [
         {

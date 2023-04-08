@@ -10,7 +10,9 @@
                             'product' => $data['product'],
                             'productImages' => $data['productImages'],
                         ])
-                        @include('pages.product.components.related-products-area')
+                        @include('pages.product.components.products-related-area', [
+                            'relatedProducts' => $data['relatedProducts'],
+                        ])
                     </div>
                 </div>
             </div>

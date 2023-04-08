@@ -48,6 +48,7 @@ class ProductController extends Controller
             'categoryTrees' => $this->commonService->getCategoryTrees(),
             'product' => $product,
             'productImages' => $this->productService->getProductImagesByProductId($product->id),
+            'relatedProducts' => $this->productService->getRelatedProductsByProductId($product->id),
         ];
         return view('pages.product.product-details-page', ['data' => $data]);
     }

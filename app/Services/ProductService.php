@@ -48,11 +48,41 @@ class ProductService
         return Product::where(['delete_flag' => false])->limit($productCount)->get();
     }
 
-    public function findProductBySlug($productSlug) {
+    public function findProductBySlug($productSlug)
+    {
         return Product::where(['delete_flag' => false, 'slug' => $productSlug])->first();
     }
 
-    public function getProductImagesByProductId($productId) {
+    public function getProductImagesByProductId($productId)
+    {
         return ProductImage::where('product_id', $productId)->get();
+    }
+
+    public function getRelatedProductsByProductId($productId)
+    {
+        $product = Product::where([
+            'delete_flag' => false,
+            'id' => $productId,
+        ])->first();
+
+        $productsSameBrandAndCategoryQueryBuilder = Product::where([
+            'delete_flag' => false,
+            'brand_id' => $product->brand_id,
+            'category_id' => $product->category_id,
+        ]);
+        $productsSameBrandQueryBuilder = Product::where([
+            'delete_flag' => false,
+            'brand_id' => $product->brand_id,
+        ]);
+        $productsSameCategoryQueryBuilder = Product::where([
+            'delete_flag' => false,
+            'category_id' => $product->category_id,
+        ]);
+
+        return $productsSameBrandAndCategoryQueryBuilder
+            ->union($productsSameBrandQueryBuilder)
+            ->union($productsSameCategoryQueryBuilder)
+            ->limit(Constants::RELATED_PRODUCTS_COUNT)
+            ->get();
     }
 }

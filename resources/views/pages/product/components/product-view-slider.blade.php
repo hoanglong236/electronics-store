@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="product-view-slider-wrapper">
-            <ul class="product-view-slider">
+            <ul class="product-images-slider">
                 @foreach ($productImages as $productImage)
                     <li>
                         <img height="50" src="{{ asset('storage/' . $productImage->image_path) }}" alt="java img">
@@ -18,5 +18,5 @@
 </div>
 
 @push('scripts')
-    <script src="{{ asset('assets/js/product-view-slider.js') }}"></script>
+    <script src="{{ asset('assets/js/product-images-slider.js') }}"></script>
 @endpush
