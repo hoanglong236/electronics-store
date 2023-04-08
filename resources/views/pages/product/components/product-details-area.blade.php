@@ -6,9 +6,9 @@
             ])
         </div>
         <div class="col-md-6">
-            {{-- @include('pages.product.components.product-info-area', [
+            @include('pages.product.components.product-info-area', [
                 'product' => $product,
-            ]) --}}
+            ])
         </div>
         <div class="col-md-3">
             {{-- @include('pages.product.components.product-sub-info-area', [
