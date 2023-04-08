@@ -44,23 +44,23 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-menu__item">
-                                <a class="dropdown-menu__item-link" href="{{ route('customer.account.info') }}">
+                                <a class="dropdown-menu__item-link" href="{{ route('customer.info') }}">
                                     My Account
                                 </a>
                             </li>
                             <li class="dropdown-menu__item">
-                                <a class="dropdown-menu__item-link" href="{{ route('customer.logout') }}"
+                                <a class="dropdown-menu__item-link" href="{{ route('logout') }}"
                                     onclick="event.preventDefault(); $('#logoutForm').submit();">Logout</a>
                             </li>
                         </ul>
                     </div>
-                    <form id="logoutForm" action="{{ route('customer.logout') }}" method="post">
+                    <form id="logoutForm" action="{{ route('logout') }}" method="post">
                         @csrf
                     </form>
                 </li>
             @else
                 <li>
-                    <a href="{{ route('customer.login') }}">Login</a>
+                    <a href="{{ route('login') }}">Login</a>
                 </li>
             @endif
         </ul>

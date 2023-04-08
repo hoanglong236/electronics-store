@@ -12,7 +12,7 @@
 
                 <div class="external-link">
                     All ready have account?
-                    <a href="{{ route('customer.login') }}">Login.</a>
+                    <a href="{{ route('login') }}">Login.</a>
                 </div>
             </div>
         </div>

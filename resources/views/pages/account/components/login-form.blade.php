@@ -1,4 +1,4 @@
-<form action="{{ route('customer.login.handler') }}" method="POST">
+<form action="{{ route('login.handler') }}" method="POST">
     @csrf
     <div class="form-group">
         <label for="email" class="form-label">Email(*)</label>

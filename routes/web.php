@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -19,22 +20,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::middleware([RedirectIfAuthenticated::class])->group(function () {
-    Route::get('/login', [CustomerController::class, 'login'])->name('customer.login');
-    Route::post('/login-handler', [CustomerController::class, 'loginHandler'])->name(
-        'customer.login.handler'
+    Route::get('/login', [AccountController::class, 'login'])->name('login');
+    Route::post('/login-handler', [AccountController::class, 'loginHandler'])->name(
+        'login.handler'
     );
 
-    Route::get('/register', [CustomerController::class, 'register'])->name('customer.register');
-    Route::post('/register-handler', [CustomerController::class, 'registerHandler'])->name(
-        'customer.register.handler'
+    Route::get('/register', [AccountController::class, 'register'])->name('register');
+    Route::post('/register-handler', [AccountController::class, 'registerHandler'])->name(
+        'register.handler'
     );
 });
 
 Route::middleware('auth:customer')->group(function () {
-    Route::post('/logout', [CustomerController::class, 'logout'])->name('customer.logout');
+    Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
 
-    Route::get('/account-info', [CustomerController::class, 'showAccountInfo'])->name(
-        'customer.account.info'
+    Route::get('/account-info', [CustomerController::class, 'showInfo'])->name(
+        'customer.info'
     );
 });
 

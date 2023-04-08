@@ -23,7 +23,7 @@
 
                 <div class="external-link">
                     New to <strong>daily<span>Shop</span></strong>?
-                    <a href="{{ route('customer.register') }}">Create an account.</a>
+                    <a href="{{ route('register') }}">Create an account.</a>
                 </div>
             </div>
         </div>

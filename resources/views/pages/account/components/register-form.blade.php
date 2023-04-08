@@ -1,4 +1,4 @@
-<form action="{{ route('customer.register.handler') }}" method="POST">
+<form action="{{ route('register.handler') }}" method="POST">
     @csrf
     <div class="form-group">
         <label for="name" class="form-label">Name(*)</label>
