@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\HomeController;
-// use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
@@ -37,9 +37,14 @@ Route::middleware('auth:customer')->group(function () {
         'customer.info'
     );
 
-    // Route::get('/orders', [OrderController::class, 'index'])->name(
-    //     'orders.index'
-    // );
+    Route::group(['prefix' => 'order'], function () {
+        Route::get('', [OrderController::class, 'index'])->name(
+            'order.index'
+        );
+        Route::get('/details/{orderId}', [OrderController::class, 'showDetails'])->name(
+            'order.details'
+        );
+    });
 });
 
 Route::get('/search', [ProductController::class, 'search'])->name(

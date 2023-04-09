@@ -5,7 +5,7 @@
         <div class="container mt-4">
             <div class="row">
                 <div class="col-md-12">
-                    @include('pages.customer.components.orders-table', [
+                    @include('pages.order.components.orders-table', [
                         'customOrders' => $data['customOrders'],
                     ])
                 </div>

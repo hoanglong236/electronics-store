@@ -604,3 +604,31 @@ a.header-cart-link {
     font-size: 1.4rem;
     vertical-align: middle;
 }
+
+.order-info-table {
+    font-size: 1.4rem;
+}
+
+.order-info-table thead th,
+.order-info-table tbody td:first-child {
+    font-weight: 600;
+}
+
+.order-info-table thead th:nth-child(2),
+.order-info-table tbody td:nth-child(2) {
+    width: 30%;
+}
+
+.order-items-table {
+    font-size: 1.4rem;
+}
+
+.order-items-table thead th,
+.order-items-table tbody td:first-child {
+    font-weight: 600;
+}
+
+.order-items-table tbody tr:last-child td {
+    border-top: 1px solid #333;
+    font-weight: 600;
+}

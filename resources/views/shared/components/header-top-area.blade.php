@@ -34,7 +34,9 @@
         <ul class="header-top-nav-right">
             <li class="hidden-xs"><a href="wishlist.html">Wishlist</a></li>
             @if (Auth::guard('customer')->check())
-                <li class="hidden-xs"><a href="checkout.html">Checkout</a></li>
+                <li class="hidden-xs">
+                    <a href="{{ route('order.index') }}">My Orders</a>
+                </li>
                 <li>
                     <div class="dropdown">
                         <a class="btn dropdown-toggle" href="#" type="button" data-toggle="dropdown"
