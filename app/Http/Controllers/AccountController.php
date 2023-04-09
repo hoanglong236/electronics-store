@@ -5,17 +5,24 @@ namespace App\Http\Controllers;
 use App\Common\Constants;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
-use App\Services\AccountService;
+use App\Services\AuthAccountService;
+use App\Services\CommonService;
+use App\Services\CustomerService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class AccountController extends Controller
 {
-    private $accountService;
+    private $commonService;
+    private $authAccountService;
+    private $customerService;
 
     public function __construct()
     {
-        $this->accountService = new AccountService();
+        $this->commonService = new CommonService();
+        $this->authAccountService = new AuthAccountService();
+        $this->customerService = new CustomerService();
     }
 
     public function login()
@@ -29,7 +36,7 @@ class AccountController extends Controller
     public function loginHandler(LoginRequest $loginRequest)
     {
         $loginProperties = $loginRequest->validated();
-        $isLoginSuccess = $this->accountService->login($loginProperties);
+        $isLoginSuccess = $this->authAccountService->login($loginProperties);
 
         if ($isLoginSuccess) {
             return redirect()->action([HomeController::class, 'index']);
@@ -50,7 +57,7 @@ class AccountController extends Controller
     public function registerHandler(RegisterRequest $registerRequest)
     {
         $registerProperties = $registerRequest->validated();
-        $this->accountService->register($registerProperties);
+        $this->authAccountService->register($registerProperties);
 
         Session::flash(Constants::ACTION_SUCCESS, Constants::REGISTER_SUCCESS);
         return redirect()->action([AccountController::class, 'login']);
@@ -58,9 +65,20 @@ class AccountController extends Controller
 
     public function logout()
     {
-        $this->accountService->logout();
+        $this->authAccountService->logout();
 
         Session::flash(Constants::ACTION_SUCCESS, Constants::LOGOUT_SUCCESS);
         return redirect()->action([AccountController::class, 'login']);
+    }
+
+    public function showInfo()
+    {
+        $customer = Auth::guard('customer')->user();
+        $data = [
+            'pageTitle' => 'Customer Account Information',
+            'categoryTrees' => $this->commonService->getCategoryTrees(),
+            'customerAddresses' => $this->customerService->getCustomerAddresses($customer->id),
+        ];
+        return view('pages.account.account-info-page', ['data' => $data]);
     }
 }

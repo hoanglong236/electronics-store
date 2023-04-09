@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\AccountController;
-use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
+// use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
@@ -33,14 +33,13 @@ Route::middleware([RedirectIfAuthenticated::class])->group(function () {
 
 Route::middleware('auth:customer')->group(function () {
     Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
-
-    Route::get('/account-info', [CustomerController::class, 'showInfo'])->name(
+    Route::get('/account-info', [AccountController::class, 'showInfo'])->name(
         'customer.info'
     );
 
-    Route::get('/orders', [CustomerController::class, 'showOrders'])->name(
-        'customer.orders'
-    );
+    // Route::get('/orders', [OrderController::class, 'index'])->name(
+    //     'orders.index'
+    // );
 });
 
 Route::get('/search', [ProductController::class, 'search'])->name(
