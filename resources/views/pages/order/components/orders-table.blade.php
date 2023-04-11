@@ -13,7 +13,7 @@
         @foreach ($customOrders as $customOrder)
             <tr>
                 <td>{{ $customOrder->id }}</td>
-                <td>{{ $customOrder->delivery_address }}</td>
+                <td>({{ $customOrder->address_type }}) {{ $customOrder->delivery_address }}</td>
                 <td>${{ number_format($customOrder->total) }}</td>
                 <td>{{ $customOrder->status }}</td>
                 <td>{{ $customOrder->created_at }}</td>

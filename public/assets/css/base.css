@@ -75,3 +75,11 @@ h6 {
     padding: 8px;
     margin-bottom: 1rem;
 }
+
+a.primary-link {
+    color: var(--primary-color);
+}
+
+a.primary-link:hover {
+    text-decoration: underline;
+}

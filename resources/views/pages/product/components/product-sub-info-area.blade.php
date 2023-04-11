@@ -28,7 +28,7 @@
             <div class="description">
                 {{ $product->warranty_period }}-month warranty at Genuine service center.
                 1 to 1 exchange in 30 days if there is a hardware defect from the manufacturer.
-                <a target="_blank" href="#warranty-policy" style="color:red">(View details)</a>
+                <a class="primary-link" target="_blank" href="#warranty-policy">(View details)</a>
             </div>
         </div>
     </div>
