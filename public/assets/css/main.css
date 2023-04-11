@@ -632,3 +632,32 @@ a.header-cart-link {
     border-top: 1px solid #333;
     font-weight: 600;
 }
+
+.item-count-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.item-count-wrapper>input[type="number"] {
+    width: 40px;
+    border-color: var(--primary-color);
+    border-left: unset;
+    border-right: unset;
+}
+
+.item-count-wrapper>button {
+    width: 25px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: 2px solid var(--primary-color);
+}
+
+.item-count-wrapper>button:hover {
+    background-color: #ff4d4d;
+    border-color: #ff4d4d;
+}
+
+a.cart-item-name:hover {
+    color: var(--primary-color);
+}

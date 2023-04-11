@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
@@ -44,6 +45,15 @@ Route::middleware('auth:customer')->group(function () {
         Route::get('/details/{orderId}', [OrderController::class, 'showDetails'])->name(
             'order.details'
         );
+    });
+
+    Route::group(['prefix' => 'cart'], function () {
+        Route::get('', [CartController::class, 'index'])->name(
+            'cart.index'
+        );
+        // Route::get('/details/{orderId}', [OrderController::class, 'showDetails'])->name(
+        //     'order.details'
+        // );
     });
 });
 
