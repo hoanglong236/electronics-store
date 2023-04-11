@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Common\Constants;
 use App\DataFilterConstants\ProductSorterConstants;
+use App\Http\Requests\ProductSearchRequest;
 use App\Services\CommonService;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
@@ -22,34 +23,53 @@ class ProductController extends Controller
     public function findByCategorySlug($categorySlug)
     {
         $data = $this->getCommonDataForProductsPage();
-        $data['brands'] = $this->productService->findProductBrandsByCategorySlug($categorySlug);
-        $data['products'] = $this->productService->findProductsByCategorySlug($categorySlug);
+        $data['products'] = $this->productService->getCustomProductsByCategorySlug($categorySlug);
+        $data['brands'] = $this->productService->retrieveBrandsFromCustomProducts($data['products']);
 
         return view('pages.product.products-page', ['data' => $data]);
     }
 
     private function getCommonDataForProductsPage()
     {
+        $categoryTrees = $this->commonService->getCategoryTrees();
+        $bestSellerProducts = $this->productService->getBestSellerProducts(
+            Constants::BEST_SELLER_PRODUCTS_SIDEBAR_COUNT
+        );
+
         return [
             'pageTitle' => 'Products',
-            'categoryTrees' => $this->commonService->getCategoryTrees(),
-            'bestSellerProducts' => $this->productService->getBestSellerProducts(
-                Constants::BEST_SELLER_PRODUCTS_SIDEBAR_COUNT
-            ),
+            'categoryTrees' => $categoryTrees,
+            'bestSellerProducts' => $bestSellerProducts,
             'sorterOptions' => ProductSorterConstants::toArray(),
         ];
     }
 
     public function showDetails($productSlug)
     {
+        $categoryTrees = $this->commonService->getCategoryTrees();
         $product = $this->productService->findProductBySlug($productSlug);
+        $productImages =  $this->productService->getProductImagesByProductId($product->id);
+        $relatedProducts = $this->productService->getRelatedProductsByProductId($product->id);
+
         $data = [
             'pageTitle' => $product->name,
-            'categoryTrees' => $this->commonService->getCategoryTrees(),
+            'categoryTrees' => $categoryTrees,
             'product' => $product,
-            'productImages' => $this->productService->getProductImagesByProductId($product->id),
-            'relatedProducts' => $this->productService->getRelatedProductsByProductId($product->id),
+            'productImages' => $productImages,
+            'relatedProducts' => $relatedProducts,
         ];
+
         return view('pages.product.product-details-page', ['data' => $data]);
+    }
+
+    public function search(ProductSearchRequest $productSearchRequest)
+    {
+        $productSearchProperties = $productSearchRequest->validated();
+
+        $data = $this->getCommonDataForProductsPage();
+        $data['products'] = $this->productService->searchCustomProducts($productSearchProperties);
+        $data['brands'] = $this->productService->retrieveBrandsFromCustomProducts($data['products']);
+
+        return view('pages.product.products-page', ['data' => $data]);
     }
 }
