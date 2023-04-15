@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateCartItemQuantityRequest;
 use App\ModelConstants\PaymentMethodConstants;
 use App\Services\CartService;
 use App\Services\CommonService;
@@ -38,5 +39,18 @@ class CartController extends Controller
         ];
 
         return view('pages.cart.cart-page', ['data' => $data]);
+    }
+
+    public function updateCartItemQuantity(
+        UpdateCartItemQuantityRequest $updateCartItemQuantityRequest,
+        $cartItemId
+    ) {
+        $updateCartItemQuantityProperties = $updateCartItemQuantityRequest->validated();
+        $this->cartService->updateCartItemQuantity(
+            $updateCartItemQuantityProperties['quantity'],
+            $cartItemId
+        );
+
+        return redirect()->action([CartController::class, 'index']);
     }
 }

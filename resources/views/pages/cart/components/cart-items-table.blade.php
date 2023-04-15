@@ -25,14 +25,20 @@
                     </a>
                 </td>
                 <td>
-                    <form action="" method="post">
+                    <form id="{{ 'updateCartItemQuantityForm' . $customCartItem->id }}"
+                        action="{{ route('cart.item.quantity.change', $customCartItem->id) }}" method="post">
                         @csrf
                         <div class="item-count-wrapper">
-                            <button>-</button>
-                            <input type="number" value="{{ $customCartItem->quantity }}" min="1">
-                            <button>+</button>
+                            <button type="button"
+                                onclick="decrementCartItemQuantity({{ $customCartItem->id }})">-</button>
+                            <input id="{{ 'cartItemQuantityInput' . $customCartItem->id }}" type="number"
+                                name="quantity" value="{{ $customCartItem->quantity }}" min="1"
+                                onchange="onCartItemQuantityChange({{ $customCartItem->id }})">
+                            <button type="button"
+                                onclick="incrementCartItemQuantity({{ $customCartItem->id }})">+</button>
                         </div>
-
+                        <input id="{{ 'originalItemQuantityInput' . $customCartItem->id }}" type="hidden"
+                            value="{{ $customCartItem->quantity }}">
                     </form>
                 </td>
 
@@ -40,9 +46,7 @@
                     $total_price = $customCartItem->product_price * (1 - $customCartItem->product_discount_percent / 100) * $customCartItem->quantity;
                     $total += $total_price;
                 @endphp
-
-                <td>{{ '$' . number_format($total_price) }}
-                </td>
+                <td>{{ '$' . number_format($total_price) }}</td>
             </tr>
         @endforeach
         <tr>
@@ -52,3 +56,7 @@
         </tr>
     </tbody>
 </table>
+
+@push('scripts')
+    <script src="{{ asset('assets/js/update-cart-item-quantity.js') }}"></script>
+@endpush

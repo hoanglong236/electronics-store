@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Cart;
+use App\Models\CartItem;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -31,8 +32,17 @@ class CartService
                 'products.quantity as product_quantity',
                 'products.main_image_path as product_main_image_path',
                 'cart_items.quantity',
+                'cart_items.id',
             ])
             ->where('cart_id', $cartId)
             ->get();
+    }
+
+    public function updateCartItemQuantity($cartItemQuantity, $cartItemId)
+    {
+        $cartItem = CartItem::where('id', $cartItemId)->first();
+        $cartItem->quantity = $cartItemQuantity;
+
+        $cartItem->save();
     }
 }

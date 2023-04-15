@@ -51,9 +51,9 @@ Route::middleware('auth:customer')->group(function () {
         Route::get('', [CartController::class, 'index'])->name(
             'cart.index'
         );
-        // Route::get('/details/{orderId}', [OrderController::class, 'showDetails'])->name(
-        //     'order.details'
-        // );
+        Route::post('/item/change-quantity/{cartItemId}', [CartController::class, 'updateCartItemQuantity'])->name(
+            'cart.item.quantity.change'
+        );
     });
 });
 
