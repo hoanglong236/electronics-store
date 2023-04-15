@@ -681,6 +681,27 @@ a.cart-item-name:hover {
     margin-bottom: 10px;
 }
 
+.address-panel-wrapper .panel-title,
+.payment-panel-wrapper .panel-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.address-panel-wrapper .panel-title a,
+.payment-panel-wrapper .panel-title a {
+    display: block;
+}
+
 .place-order-btn {
     width: 100%;
+}
+
+.cart-action-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.checkout-btn {
+    padding: 10px 50px;
 }

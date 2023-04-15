@@ -6,6 +6,7 @@
             <th scope="col">Product</th>
             <th scope="col">Quantity</th>
             <th scope="col">Total price</th>
+            <th scope="col"></th>
         </tr>
     </thead>
     <tbody>
@@ -47,6 +48,13 @@
                     $total += $total_price;
                 @endphp
                 <td>{{ '$' . number_format($total_price) }}</td>
+                <td>
+                    <form action="">
+                        @csrf
+                        @method('DELETE')
+                        <button>Delete</button>
+                    </form>
+                </td>
             </tr>
         @endforeach
         <tr>

@@ -4,16 +4,13 @@
     <section id="checkout">
         <div class="container my-4">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     @include('pages.cart.components.cart-items-table', [
                         'customCartItems' => $data['customCartItems'],
                     ])
-                </div>
-                <div class="col-md-4">
-                    @include('pages.cart.components.checkout-form', [
-                        'customerAddresses' => $data['customerAddresses'],
-                        'paymentMethods' => $data['paymentMethods'],
-                    ])
+                    <div class="cart-action-wrapper">
+                        <a href="{{ route('cart.checkout') }}" class="btn action-btn checkout-btn">CHECKOUT</a>
+                    </div>
                 </div>
             </div>
         </div>

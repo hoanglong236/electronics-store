@@ -53,4 +53,22 @@ class CartController extends Controller
 
         return redirect()->action([CartController::class, 'index']);
     }
+
+    public function checkout()
+    {
+        $categoryTrees = $this->commonService->getCategoryTrees();
+        $customer = Auth::guard('customer')->user();
+        $customCartItems = $this->cartService->getCustomCartItemsByCustomerId($customer->id);
+        $customerAddresses = $this->customerService->getCustomerAddresses($customer->id);
+
+        $data = [
+            'pageTitle' => 'Cart',
+            'categoryTrees' => $categoryTrees,
+            'customCartItems' => $customCartItems,
+            'customerAddresses' => $customerAddresses,
+            'paymentMethods' => PaymentMethodConstants::toArray(),
+        ];
+
+        return view('pages.cart.checkout-page', ['data' => $data]);
+    }
 }
