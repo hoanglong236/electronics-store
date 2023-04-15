@@ -49,10 +49,13 @@
                 @endphp
                 <td>{{ '$' . number_format($total_price) }}</td>
                 <td>
-                    <form action="">
+                    <form action="{{ route('cart.item.delete', $customCartItem->id) }}" method="post"
+                        onsubmit="return confirm('Are you sure you want to delete an item in the cart?');">
                         @csrf
-                        @method('DELETE')
-                        <button>Delete</button>
+                        @method('delete')
+                        <button>
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </button>
                     </form>
                 </td>
             </tr>
@@ -61,6 +64,7 @@
             <td colspan="2"></td>
             <td colspan="2">TOTAL</td>
             <td>{{ '$' . number_format($total) }}</td>
+            <td></td>
         </tr>
     </tbody>
 </table>

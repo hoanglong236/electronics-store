@@ -13,6 +13,10 @@ class Constants
     const ACTION_SUCCESS = 'success_message';
     const ACTION_ERROR = 'error_message';
 
+    const CREATE_SUCCESS = 'Create successfully.';
+    const UPDATE_SUCCESS = 'Update successfully.';
+    const DELETE_SUCCESS = 'Delete successfully.';
+
     const LOGOUT_SUCCESS = 'Logout successfully.';
     const REGISTER_SUCCESS = 'Register successfully.';
     const LOGIN_DETAIL_INVALID = 'Please enter valid login details.';

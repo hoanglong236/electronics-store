@@ -45,4 +45,10 @@ class CartService
 
         $cartItem->save();
     }
+
+    public function deleteCartItem($cartItemId)
+    {
+        $cartItem = CartItem::where('id', $cartItemId)->first();
+        $cartItem->delete();
+    }
 }

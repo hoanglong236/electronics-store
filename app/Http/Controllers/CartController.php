@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Common\Constants;
 use App\Http\Requests\UpdateCartItemQuantityRequest;
 use App\ModelConstants\PaymentMethodConstants;
 use App\Services\CartService;
@@ -9,6 +10,7 @@ use App\Services\CommonService;
 use App\Services\CustomerService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -51,6 +53,7 @@ class CartController extends Controller
             $cartItemId
         );
 
+        Session::flash(Constants::ACTION_SUCCESS, Constants::UPDATE_SUCCESS);
         return redirect()->action([CartController::class, 'index']);
     }
 
@@ -70,5 +73,13 @@ class CartController extends Controller
         ];
 
         return view('pages.cart.checkout-page', ['data' => $data]);
+    }
+
+    public function deleteCartItem($cartItemId)
+    {
+        $this->cartService->deleteCartItem($cartItemId);
+
+        Session::flash(Constants::ACTION_SUCCESS, Constants::DELETE_SUCCESS);
+        return redirect()->action([CartController::class, 'index']);
     }
 }
