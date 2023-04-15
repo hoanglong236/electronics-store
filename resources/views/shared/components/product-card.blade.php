@@ -23,7 +23,7 @@
             <i class="fa fa-heart-o" aria-hidden="true"></i>
         </a>
         <button>
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add cart
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to Cart
         </button>
     </div>
 </div>

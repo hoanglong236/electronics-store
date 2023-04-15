@@ -26,8 +26,6 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <!-- Quick view model -->
-                            @include('pages.home.components.product-quick-view')
                         </div>
                     </div>
                 </div>

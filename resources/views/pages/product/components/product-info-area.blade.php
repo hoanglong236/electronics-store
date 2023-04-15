@@ -18,7 +18,7 @@
     @include('pages.product.components.product-view-promotion-box')
     <div class="action-button-wrapper mt-3">
         <a class="btn action-outline-btn px-4" href="#">
-            <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add To Cart
+            <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart
         </a>
         <a class="btn action-outline-btn px-4 ml-3" href="#">
             <i class="fa fa-heart-o" aria-hidden="true"></i> Wishlist
