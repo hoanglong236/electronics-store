@@ -645,6 +645,7 @@ a.header-cart-link {
     border-right: unset;
     border-top: 2px solid var(--primary-color);
     border-bottom: 2px solid var(--primary-color);
+    padding-left: 4px;
 }
 
 .item-count-wrapper>button {

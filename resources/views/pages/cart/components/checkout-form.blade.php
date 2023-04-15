@@ -12,7 +12,7 @@
                 @foreach ($customerAddresses as $index => $customerAddress)
                     <div class="form-check">
                         <input class="form-check-input" type="radio" id="{{ 'deliveryAddress' . $index }}"
-                            name="deliveryAddress">
+                            name="deliveryAddress" @checked($customerAddress->default_flag)>
                         <label class="form-check-label" for="{{ 'deliveryAddress' . $index }}">
                             {{ $customerAddress->specific_address .
                                 ', ' .
@@ -41,7 +41,7 @@
                 @foreach ($paymentMethods as $index => $paymentMethod)
                     <div class="form-check">
                         <input class="form-check-input" type="radio" id="{{ 'paymentMethod' . $index }}"
-                            name="paymentMethod">
+                            name="paymentMethod" @checked($index === 0)>
                         <label class="form-check-label" for="{{ 'paymentMethod' . $index }}">
                             {{ $paymentMethod }}
                         </label>
