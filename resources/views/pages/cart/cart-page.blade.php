@@ -2,7 +2,7 @@
 
 @section('body-main-content')
     <section id="checkout">
-        <div class="container mt-4">
+        <div class="container my-4">
             <div class="row">
                 <div class="col-md-8">
                     @include('pages.cart.components.cart-items-table', [
@@ -10,7 +10,10 @@
                     ])
                 </div>
                 <div class="col-md-4">
-
+                    @include('pages.cart.components.checkout-form', [
+                        'customerAddresses' => $data['customerAddresses'],
+                        'paymentMethods' => $data['paymentMethods'],
+                    ])
                 </div>
             </div>
         </div>

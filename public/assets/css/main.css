@@ -661,3 +661,25 @@ a.header-cart-link {
 a.cart-item-name:hover {
     color: var(--primary-color);
 }
+
+.customer-address-panel {
+    font-size: 1.4rem;
+}
+
+.customer-address-panel .form-check {
+    display: flex;
+    align-items: flex-start;
+}
+
+.customer-address-panel .form-check .form-check-label {
+    font-weight: 400;
+    margin-left: 8px;
+}
+
+.address-panel-wrapper {
+    margin-bottom: 10px;
+}
+
+.place-order-btn {
+    width: 100%;
+}
