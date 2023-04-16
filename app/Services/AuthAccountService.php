@@ -10,15 +10,23 @@ use Illuminate\Support\Facades\Session;
 
 class AuthAccountService
 {
+    private $cartService;
+
+    public function __construct()
+    {
+        $this->cartService = new CartService();
+    }
+
     public function register($registerProperties)
     {
-        Customer::create([
+        $customer = Customer::create([
             'name' => $registerProperties['name'],
             'phone' => $registerProperties['phone'],
             'gender' => $registerProperties['gender'],
             'email' => $registerProperties['email'],
             'password' => Hash::make($registerProperties['password']),
         ]);
+        $this->cartService->createCustomerCart($customer->id);
     }
 
     public function login($loginProperties)

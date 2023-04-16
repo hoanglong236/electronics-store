@@ -57,4 +57,11 @@ class CartService
         $cart = $this->getCartByCustomerId($customerId);
         CartItem::where('cart_id', $cart->id)->delete();
     }
+
+    public function createCustomerCart($customerId)
+    {
+        Cart::create([
+            'customer_id' => $customerId,
+        ]);
+    }
 }
