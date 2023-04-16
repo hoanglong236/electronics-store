@@ -22,8 +22,14 @@
         <a href="#favorite">
             <i class="fa fa-heart-o" aria-hidden="true"></i>
         </a>
-        <button>
+        <button type="button" onclick="$('#addToCartForm{{ $product->id }}').submit();">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to Cart
         </button>
     </div>
+
+    <form id="addToCartForm{{ $product->id }}" action="{{ route('cart.add.item') }}" method="POST">
+        @csrf
+        <input type="hidden" name="productId" value="{{ $product->id }}">
+        <input type="hidden" name="quantity" value="1">
+    </form>
 </div>

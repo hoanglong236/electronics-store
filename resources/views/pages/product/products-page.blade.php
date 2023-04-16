@@ -24,4 +24,6 @@
             </div>
         </div>
     </section>
+
+    @include('shared.components.action-results-alert')
 @endsection
