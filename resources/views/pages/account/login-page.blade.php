@@ -10,16 +10,7 @@
                 </div>
 
                 @include('pages.account.components.login-form')
-
-                @if (Session::has(Constants::ACTION_ERROR))
-                    <div class="alert alert-danger mt-2" role="alert">
-                        {{ Session::get(Constants::ACTION_ERROR) }}
-                    </div>
-                @elseif (Session::has(Constants::ACTION_SUCCESS))
-                    <div class="alert alert-success mt-2" role="alert">
-                        {{ Session::get(Constants::ACTION_SUCCESS) }}
-                    </div>
-                @endif
+                @include('shared.components.action-results-area')
 
                 <div class="external-link">
                     New to <strong>daily<span>Shop</span></strong>?

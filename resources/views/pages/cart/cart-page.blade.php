@@ -5,15 +5,7 @@
         <div class="container my-4">
             <div class="row">
                 <div class="col-md-12">
-                    @if (Session::has(Constants::ACTION_ERROR))
-                        <div class="alert alert-danger mt-2" role="alert">
-                            {{ Session::get(Constants::ACTION_ERROR) }}
-                        </div>
-                    @elseif (Session::has(Constants::ACTION_SUCCESS))
-                        <div class="alert alert-success mt-2" role="alert">
-                            {{ Session::get(Constants::ACTION_SUCCESS) }}
-                        </div>
-                    @endif
+                    @include('shared.components.action-results-area')
                 </div>
             </div>
 

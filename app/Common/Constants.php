@@ -21,6 +21,7 @@ class Constants
     const REGISTER_SUCCESS = 'Register successfully.';
     const LOGIN_DETAIL_INVALID = 'Please enter valid login details.';
     const PLACE_ORDER_FAILED = 'Order failed. Because the quantity of some items is not enough.';
+    const ADD_TO_CART_SUCCESS = 'Add to cart successfully';
 
     const ITEMS_PER_PRODUCTS_PAGE = 9;
 

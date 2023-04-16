@@ -17,9 +17,14 @@
     </div>
     @include('pages.product.components.product-view-promotion-box')
     <div class="action-button-wrapper mt-3">
-        <a class="btn action-outline-btn px-4" href="#">
-            <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart
-        </a>
+        <form action="{{ route('cart.add.item') }}" method="POST">
+            @csrf
+            <input type="hidden" name="productId" value="{{ $product->id }}">
+            <input type="hidden" name="quantity" value="1">
+            <button class="btn action-outline-btn px-4" type="submit">
+                <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart
+            </button>
+        </form>
         <a class="btn action-outline-btn px-4 ml-3" href="#">
             <i class="fa fa-heart-o" aria-hidden="true"></i> Wishlist
         </a>

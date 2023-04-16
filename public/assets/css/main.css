@@ -544,8 +544,12 @@ a.header-cart-link {
     flex-wrap: wrap;
 }
 
-.action-button-wrapper a:first-child {
+.action-button-wrapper>form {
     flex: 1;
+}
+
+.action-button-wrapper>form>button.action-outline-btn {
+    width: 100%;
 }
 
 .product-details-content {

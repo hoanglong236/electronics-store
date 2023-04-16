@@ -64,4 +64,29 @@ class CartService
             'customer_id' => $customerId,
         ]);
     }
+
+    public function addProductToCart($addProductToCartProperties, $customerId)
+    {
+        $productId = $addProductToCartProperties['productId'];
+        $quantity = $addProductToCartProperties['quantity'];
+        $cart = $this->getCartByCustomerId($customerId);
+
+        $cartItem = CartItem::where([
+            'cart_id' => $cart->id,
+            'product_id' => $productId,
+        ])->first();
+
+        if (!is_null($cartItem)) {
+           $cartItem->quantity += $quantity;
+           $cartItem->save();
+
+           return;
+        }
+
+        CartItem::create([
+            'cart_id' => $cart->id,
+            'product_id' => $productId,
+            'quantity' => $quantity,
+        ]);
+    }
 }
