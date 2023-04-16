@@ -25,7 +25,7 @@
                         <a href="#" class="aa-cartbox-img"><img alt="img"
                                 src="{{ asset('storage/' . $product->main_image_path) }}"></a>
                         <div class="aa-cartbox-info">
-                            <h4><a href="">{{ $product->name }}</a></h4>
+                            <h4><a href="{{ route('product.details', $product->slug) }}">{{ $product->name }}</a></h4>
                             <div class="product-price-wrapper">
                                 @if ($product->discount_percent === 0)
                                     <span>{{ '$' . number_format($product->price) }}</span>
