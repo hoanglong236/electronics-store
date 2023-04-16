@@ -45,6 +45,9 @@ Route::middleware('auth:customer')->group(function () {
         Route::get('/details/{orderId}', [OrderController::class, 'showDetails'])->name(
             'order.details'
         );
+        Route::post('/place', [OrderController::class, 'placeOrder'])->name(
+            'order.place'
+        );
     });
 
     Route::group(['prefix' => 'cart'], function () {

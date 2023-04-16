@@ -137,4 +137,9 @@ class ProductService
 
         return $brands;
     }
+
+    public function getProductById($productId)
+    {
+        return Product::where(['delete_flag' => false, 'id' => $productId])->first();
+    }
 }

@@ -706,3 +706,15 @@ a.cart-item-name:hover {
 .checkout-btn {
     padding: 10px 50px;
 }
+
+.quantity-alert-wrapper span {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--primary-color);
+}
+
+span.in-stock-quantity {
+    display: block;
+    font-style: normal;
+    font-weight: 600;
+}

@@ -20,11 +20,11 @@ class Constants
     const LOGOUT_SUCCESS = 'Logout successfully.';
     const REGISTER_SUCCESS = 'Register successfully.';
     const LOGIN_DETAIL_INVALID = 'Please enter valid login details.';
+    const PLACE_ORDER_FAILED = 'Order failed. Because the quantity of some items is not enough.';
 
     const ITEMS_PER_PRODUCTS_PAGE = 9;
 
     const BEST_SELLER_PRODUCTS_SIDEBAR_COUNT = 3;
-
     const RELATED_PRODUCTS_COUNT = 8;
 
     private function __construct()

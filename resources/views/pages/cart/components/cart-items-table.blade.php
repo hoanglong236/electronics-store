@@ -24,6 +24,13 @@
                     <a href="{{ route('product.details', $customCartItem->product_slug) }}" class="cart-item-name">
                         {{ $customCartItem->product_name }}
                     </a>
+                    @if ($customCartItem->quantity > $customCartItem->product_quantity)
+                        <div class="quantity-alert-wrapper mt-3">
+                            <span class="in-stock-quantity">Instock: {{ $customCartItem->product_quantity }}</span>
+                            <span>* Make sure the quantity you choose is less than</span>
+                            <span> or equal to the quantity in stock</span>
+                        </div>
+                    @endif
                 </td>
                 <td>
                     <form id="{{ 'updateCartItemQuantityForm' . $customCartItem->id }}"

@@ -13,6 +13,7 @@
                     @include('pages.cart.components.checkout-form', [
                         'customerAddresses' => $data['customerAddresses'],
                         'paymentMethods' => $data['paymentMethods'],
+                        'customCartItems' => $data['customCartItems'],
                     ])
                 </div>
             </div>

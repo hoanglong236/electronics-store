@@ -51,4 +51,10 @@ class CartService
         $cartItem = CartItem::where('id', $cartItemId)->first();
         $cartItem->delete();
     }
+
+    public function clearCustomerCart($customerId)
+    {
+        $cart = $this->getCartByCustomerId($customerId);
+        CartItem::where('cart_id', $cart->id)->delete();
+    }
 }

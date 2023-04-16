@@ -2,12 +2,21 @@
 
 namespace App\Services;
 
+use App\Models\CartItem;
+use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class OrderService
 {
+    private $productService;
+
+    public function __construct()
+    {
+        $this->productService = new ProductService();
+    }
+
     public function getCustomOrdersByCustomerId($customerId)
     {
         return DB::table('orders')
@@ -71,5 +80,40 @@ class OrderService
             )
             ->where(['order_items.order_id' => $orderId])
             ->get();
+    }
+
+    public function placeOrder($placeOrderProperties, $customerId)
+    {
+        $cartItems = CartItem::whereIn('id', $placeOrderProperties['cartItemIds'])->get();
+        foreach ($cartItems as $cartItem) {
+            if (!$this->checkProductQuantity($cartItem->product_id, $cartItem->quantity)) {
+                return false;
+            }
+        }
+
+        $order = Order::create([
+            'customer_id' => $customerId,
+            'delivery_address' => $placeOrderProperties['deliveryAddress'],
+            'payment_method' => $placeOrderProperties['paymentMethod'],
+        ]);
+        foreach ($cartItems as $cartItem) {
+            $product = $this->productService->getProductById($cartItem->product_id);
+            $product->quantity -= $cartItem->quantity;
+            $product->save();
+
+            OrderItem::create([
+                'order_id' => $order->id,
+                'product_id' => $cartItem->product_id,
+                'quantity' => $cartItem->quantity,
+                'total_price' => $product->price * (1 - $product->discount_percent / 100) * $cartItem->quantity,
+            ]);
+        }
+        return true;
+    }
+
+    private function checkProductQuantity($productId, $quantity)
+    {
+        $product = $this->productService->getProductById($productId);
+        return $quantity <= $product->quantity;
     }
 }
