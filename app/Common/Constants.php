@@ -24,6 +24,8 @@ class Constants
     const ADD_TO_CART_SUCCESS = 'Add to cart successfully';
     const ORDER_CANCEL_SUCCESS = 'Order canceled successfully';
     const ORDER_CANCEL_FAILURE = 'Order canceled failed';
+    const CHANGE_DEFAULT_ADDRESS_FAILURE = 'Change default address failed';
+    const DELETE_CUSTOMER_ADDRESS_FAILURE = 'Delete customer address failed';
 
     const ITEMS_PER_PRODUCTS_PAGE = 9;
 

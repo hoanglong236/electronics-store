@@ -5,6 +5,7 @@
             <th scope="col">Address</th>
             <th scope="col">Type</th>
             <th scope="col">Default</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -21,10 +22,24 @@
                 </td>
                 <td>{{ $customerAddress->address_type }}</td>
                 <td>
-                    <div class="form-check">
-                        <label class="form-check-label">&nbsp;</label>
-                        <input class="form-check-input" type="checkbox" @checked($customerAddress->default_flag)>
-                    </div>
+                    <form action="{{ route('customer.info.change.default.address', $customerAddress->id) }}"
+                        method="post">
+                        @csrf
+                        @method('PUT')
+                        <div class="form-group text-center">
+                            <input class="form-input" type="radio" @checked($customerAddress->default_flag)
+                                onchange="this.form.submit()">
+                        </div>
+                    </form>
+                </td>
+                <td>
+                    <form action="{{ route('customer.info.address.delete', $customerAddress->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
         @endforeach

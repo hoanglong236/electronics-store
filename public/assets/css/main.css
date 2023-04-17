@@ -689,6 +689,7 @@ a.cart-item-name:hover {
 .address-panel-wrapper .panel-title,
 .payment-panel-wrapper .panel-title {
     font-size: 1.4rem;
+    line-height: 1.8rem;
     font-weight: 600;
 }
 

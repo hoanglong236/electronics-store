@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Common\Constants;
+use App\Http\Requests\AddCustomerAddressRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Services\AuthAccountService;
@@ -80,5 +81,41 @@ class AccountController extends Controller
             'customerAddresses' => $this->customerService->getCustomerAddresses($customer->id),
         ];
         return view('pages.account.account-info-page', ['data' => $data]);
+    }
+
+    public function addCustomerAddress(AddCustomerAddressRequest $addCustomerAddressRequest)
+    {
+        $customer = Auth::guard('customer')->user();
+        $addCustomerAddressProperties = $addCustomerAddressRequest->validated();
+        $this->customerService->addCustomerAddress($addCustomerAddressProperties, $customer->id);
+
+        Session::flash(Constants::ACTION_SUCCESS, Constants::CREATE_SUCCESS);
+        return redirect()->action([AccountController::class, 'showInfo']);
+    }
+
+    public function changeDefaultCustomerAddress($customerAddressId)
+    {
+        $customer = Auth::guard('customer')->user();
+        $isSuccess = $this->customerService->changeDefaultCustomerAddress($customerAddressId, $customer->id);
+
+        if ($isSuccess) {
+            Session::flash(Constants::ACTION_SUCCESS, Constants::UPDATE_SUCCESS);
+        } else {
+            Session::flash(Constants::ACTION_ERROR, Constants::CHANGE_DEFAULT_ADDRESS_FAILURE);
+        }
+        return redirect()->action([AccountController::class, 'showInfo']);
+    }
+
+    public function deleteCustomerAddress($customerAddressId)
+    {
+        $customer = Auth::guard('customer')->user();
+        $isSuccess = $this->customerService->deleteCustomerAddress($customerAddressId, $customer->id);
+
+        if ($isSuccess) {
+            Session::flash(Constants::ACTION_SUCCESS, Constants::DELETE_SUCCESS);
+        } else {
+            Session::flash(Constants::ACTION_ERROR, Constants::DELETE_CUSTOMER_ADDRESS_FAILURE);
+        }
+        return redirect()->action([AccountController::class, 'showInfo']);
     }
 }

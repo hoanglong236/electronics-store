@@ -211,6 +211,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         'Constants' => App\Common\Constants::class,
         'OrderStatusConstants' => App\ModelConstants\OrderStatusConstants::class,
+        'AddressType' => App\ModelConstants\AddressType::class,
         'FirebaseStorageService' => App\Services\FirebaseStorageService::class,
     ])->toArray(),
 

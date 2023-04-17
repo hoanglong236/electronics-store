@@ -34,9 +34,21 @@ Route::middleware([RedirectIfAuthenticated::class])->group(function () {
 
 Route::middleware('auth:customer')->group(function () {
     Route::post('/logout', [AccountController::class, 'logout'])->name('logout');
-    Route::get('/account-info', [AccountController::class, 'showInfo'])->name(
-        'customer.info'
-    );
+
+    Route::group(['prefix' => 'account'], function () {
+        Route::get('/info', [AccountController::class, 'showInfo'])->name(
+            'customer.info'
+        );
+        Route::post('/info/add-address', [AccountController::class, 'addCustomerAddress'])->name(
+            'customer.info.address.add'
+        );
+        Route::put('/info/change-default-address/{customerAddressId}', [AccountController::class, 'changeDefaultCustomerAddress'])->name(
+            'customer.info.change.default.address'
+        );
+        Route::delete('/info/address/delete/{customerAddressId}', [AccountController::class, 'deleteCustomerAddress'])->name(
+            'customer.info.address.delete'
+        );
+    });
 
     Route::group(['prefix' => 'order'], function () {
         Route::get('', [OrderController::class, 'index'])->name(
