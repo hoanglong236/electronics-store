@@ -63,5 +63,5 @@
         <input type="hidden" name="cartItemIds[]" value="{{ $customCartItem->id }}" readonly>
     @endforeach
 
-    <button class="btn action-btn place-order-btn" type="submit">Place Order</button>
+    <button class="btn action-btn place-order-btn" type="submit">Place order</button>
 </form>

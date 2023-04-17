@@ -60,7 +60,7 @@
                         onsubmit="return confirm('Are you sure you want to delete an item in the cart?');">
                         @csrf
                         @method('delete')
-                        <button>
+                        <button class="btn btn-danger btn-sm">
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </button>
                     </form>

@@ -15,7 +15,7 @@
                         'customCartItems' => $data['customCartItems'],
                     ])
                     <div class="cart-action-wrapper">
-                        <a href="{{ route('cart.checkout') }}" class="btn action-btn checkout-btn">CHECKOUT</a>
+                        <a href="{{ route('cart.checkout') }}" class="btn action-btn checkout-btn">Checkout</a>
                     </div>
                 </div>
             </div>

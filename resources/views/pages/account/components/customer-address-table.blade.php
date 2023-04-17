@@ -33,7 +33,8 @@
                     </form>
                 </td>
                 <td>
-                    <form action="{{ route('customer.info.address.delete', $customerAddress->id) }}" method="post">
+                    <form action="{{ route('customer.info.address.delete', $customerAddress->id) }}" method="post"
+                        onsubmit="return confirm('Are you sure you want to delete your address?')">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm">
