@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\ModelConstants\OrderStatusConstants;
 use App\Models\CartItem;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -115,5 +116,22 @@ class OrderService
     {
         $product = $this->productService->getProductById($productId);
         return $quantity <= $product->quantity;
+    }
+
+    public function cancelOrder($orderId, $customerId)
+    {
+        $order = Order::where('id', $orderId)->first();
+        if ($order->customer_id !== $customerId) {
+            return false;
+        }
+        switch ($order->status) {
+            case OrderStatusConstants::RECEIVED:
+            case OrderStatusConstants::PROCESSING:
+                $order->status = OrderStatusConstants::CANCELLED;
+                $order->save();
+                return true;
+            default:
+                return false;
+        }
     }
 }

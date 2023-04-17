@@ -48,6 +48,9 @@ Route::middleware('auth:customer')->group(function () {
         Route::post('/place', [OrderController::class, 'placeOrder'])->name(
             'order.place'
         );
+        Route::delete('/cancel/{orderId}', [OrderController::class, 'cancelOrder'])->name(
+            'order.cancel'
+        );
     });
 
     Route::group(['prefix' => 'cart'], function () {

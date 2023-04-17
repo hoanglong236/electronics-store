@@ -22,6 +22,8 @@ class Constants
     const LOGIN_DETAIL_INVALID = 'Please enter valid login details.';
     const PLACE_ORDER_FAILED = 'Order failed. Because the quantity of some items is not enough.';
     const ADD_TO_CART_SUCCESS = 'Add to cart successfully';
+    const ORDER_CANCEL_SUCCESS = 'Order canceled successfully';
+    const ORDER_CANCEL_FAILURE = 'Order canceled failed';
 
     const ITEMS_PER_PRODUCTS_PAGE = 9;
 

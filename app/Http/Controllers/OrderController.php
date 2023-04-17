@@ -65,4 +65,16 @@ class OrderController extends Controller
         Session::flash(Constants::ACTION_SUCCESS, Constants::CREATE_SUCCESS);
         return redirect()->action([OrderController::class, 'index']);
     }
+
+    public function cancelOrder($orderId) {
+        $customer = Auth::guard('customer')->user();
+        $isSuccess = $this->orderService->cancelOrder($orderId, $customer->id);
+
+        if ($isSuccess) {
+            Session::flash(Constants::ACTION_SUCCESS, Constants::ORDER_CANCEL_SUCCESS);
+        } else {
+            Session::flash(Constants::ACTION_ERROR, Constants::ORDER_CANCEL_FAILURE);
+        }
+        return redirect()->action([OrderController::class, 'index']);
+    }
 }

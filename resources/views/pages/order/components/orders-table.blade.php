@@ -18,7 +18,13 @@
                 <td>{{ $customOrder->status }}</td>
                 <td>{{ $customOrder->created_at }}</td>
                 <td>
-                    <a href="{{ route('order.details', $customOrder->id) }}" class="btn btn-primary btn-sm">Details</a>
+                    <a href="{{ route('order.details', $customOrder->id) }}" class="btn btn-primary btn-sm mb-2">Details</a>
+                    <form action="{{ route('order.cancel', $customOrder->id) }}"
+                        onsubmit="return confirm('Are you sure you want to cancel your order?')" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">Cancel</button>
+                    </form>
                 </td>
             </tr>
         @endforeach
