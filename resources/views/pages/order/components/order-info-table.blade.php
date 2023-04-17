@@ -19,7 +19,7 @@
         <tr>
             <td>3</td>
             <td>Address</td>
-            <td>({{ $customOrder->address_type }}) {{ $customOrder->delivery_address }}</td>
+            <td>{{ $customOrder->delivery_address }}</td>
         </tr>
         <tr>
             <td>4</td>

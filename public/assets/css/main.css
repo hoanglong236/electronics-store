@@ -722,3 +722,11 @@ span.in-stock-quantity {
     font-style: normal;
     font-weight: 600;
 }
+
+span.complete-status {
+    color: #3e9939;
+}
+
+span.cancel-status {
+    color: #d9534f;
+}
