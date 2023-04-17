@@ -16,7 +16,7 @@
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td>
-                    <img height="40" src="{{ asset('storage/' . $customOrderItem->image_path) }}" alt="">
+                    <img height="40" src="{{ FirebaseStorageService::getImageUrl($customOrderItem->image_path) }}" alt="">
                 </td>
                 <td>{{ $customOrderItem->product_name }}</td>
                 <td>{{ $customOrderItem->quantity }}</td>

@@ -1,7 +1,7 @@
 <div class="product-card">
     <a href="{{ route('product.details', $product->slug) }}" class="product-card__link">
         <div class="product-card__image-wrapper">
-            <img src="{{ asset('storage/' . $product->main_image_path) }}" alt="">
+            <img src="{{ FirebaseStorageService::getImageUrl($product->main_image_path) }}" alt="">
         </div>
 
         <div class="product-card__name-wrapper">

@@ -28,6 +28,8 @@ class Constants
     const BEST_SELLER_PRODUCTS_SIDEBAR_COUNT = 3;
     const RELATED_PRODUCTS_COUNT = 8;
 
+    const FIREBASE_STORAGE_IMAGES_PATH = 'project_images/';
+
     private function __construct()
     {
     }

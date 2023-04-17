@@ -23,7 +23,7 @@
                 @foreach ($bestSellerProducts as $product)
                     <li>
                         <a href="#" class="aa-cartbox-img"><img alt="img"
-                                src="{{ asset('storage/' . $product->main_image_path) }}"></a>
+                                src="{{ FirebaseStorageService::getImageUrl($product->main_image_path) }}"></a>
                         <div class="aa-cartbox-info">
                             <h4><a href="{{ route('product.details', $product->slug) }}">{{ $product->name }}</a></h4>
                             <div class="product-price-wrapper">
