@@ -8,7 +8,7 @@
                         <div class="col-md-5 no-padding">
                             <div class="aa-promo-left">
                                 <div class="aa-promo-banner">
-                                    <img class="banner-image--medium" src="{{ asset('storage/'. 'banners/apple-banner.jpg') }}" alt="img">
+                                    <img class="banner-image--medium" src="{{ asset('assets/img/apple-banner.jpg') }}" alt="img">
                                 </div>
                             </div>
                         </div>
@@ -17,22 +17,22 @@
                             <div class="aa-promo-right">
                                 <div class="aa-single-promo-right">
                                     <div class="aa-promo-banner">
-                                        <img src="{{ asset('storage/' . 'banners/samsung-banner.jpg') }}" alt="img">
+                                        <img src="{{ asset('assets/img/samsung-banner-1.jpg') }}" alt="img">
                                     </div>
                                 </div>
                                 <div class="aa-single-promo-right">
                                     <div class="aa-promo-banner">
-                                        <img src="{{ asset('storage/' . 'banners/xiaomi-banner.jpg') }}" alt="img">
+                                        <img src="{{ asset('assets/img/xiaomi-banner.jpg') }}" alt="img">
                                     </div>
                                 </div>
                                 <div class="aa-single-promo-right">
                                     <div class="aa-promo-banner">
-                                        <img src="{{ asset('storage/' . 'banners/asus-banner.jpg') }}" alt="img">
+                                        <img src="{{ asset('assets/img/asus-banner.jpg') }}" alt="img">
                                     </div>
                                 </div>
                                 <div class="aa-single-promo-right">
                                     <div class="aa-promo-banner">
-                                        <img src="{{ asset('storage/' . 'banners/msi-banner.jpg') }}" alt="img">
+                                        <img src="{{ asset('assets/img/msi-banner.jpg') }}" alt="img">
                                     </div>
                                 </div>
                             </div>
