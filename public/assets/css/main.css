@@ -196,7 +196,7 @@ a.header-logo-link {
     -ms-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
-    background-color: #ff6666;
+    background-color: var(--primary-color);
 }
 
 .header-cart-box {
@@ -210,7 +210,7 @@ a.header-cart-link {
     width: 120px;
     height: auto;
     display: block;
-    color: #ff6666;
+    color: var(--primary-color);
 }
 
 .header-cart-link .fa-shopping-basket {
@@ -242,8 +242,8 @@ a.header-cart-link {
     animation-duration: 2s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    border: 1px solid #ff6666;
-    color: #ff6666;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
 }
 
 .register-btn {

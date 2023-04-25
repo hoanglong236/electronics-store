@@ -20,7 +20,7 @@
                                         @include('shared.components.products-list', [
                                             'products' => $data['productsOfTopCategories'][$category->id],
                                         ])
-                                        <a class="aa-browse-btn" href="#">
+                                        <a class="aa-browse-btn" href="{{ route('product.findBy.categorySlug', $category->slug) }}">
                                             Browse all Product <span class="fa fa-long-arrow-right"></span>
                                         </a>
                                     </div>
