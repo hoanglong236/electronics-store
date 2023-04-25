@@ -17,9 +17,6 @@
                                 @include('shared.components.products-list', [
                                     'products' => $data['popularProducts'],
                                 ])
-                                <a class="aa-browse-btn" href="#">
-                                    Browse all Product <span class="fa fa-long-arrow-right"></span>
-                                </a>
                             </div>
                             <!-- Popular products END -->
 
@@ -28,9 +25,6 @@
                                 @include('shared.components.products-list', [
                                     'products' => $data['featuredProducts'],
                                 ])
-                                <a class="aa-browse-btn" href="#">
-                                    Browse all Product <span class="fa fa-long-arrow-right"></span>
-                                </a>
                             </div>
                             <!-- Featured products END -->
 
@@ -39,9 +33,6 @@
                                 @include('shared.components.products-list', [
                                     'products' => $data['latestProducts'],
                                 ])
-                                <a class="aa-browse-btn" href="#">
-                                    Browse all Product <span class="fa fa-long-arrow-right"></span>
-                                </a>
                             </div>
                             <!-- Latest products END -->
                         </div>
