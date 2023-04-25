@@ -2,6 +2,7 @@
 
 namespace App\Common;
 
+use App\ModelConstants\AddressType;
 use Illuminate\Support\Facades\Log;
 
 class Constants
@@ -28,11 +29,13 @@ class Constants
     const DELETE_CUSTOMER_ADDRESS_FAILURE = 'Delete customer address failed';
 
     const ITEMS_PER_PRODUCTS_PAGE = 9;
-
     const BEST_SELLER_PRODUCTS_SIDEBAR_COUNT = 3;
     const RELATED_PRODUCTS_COUNT = 8;
 
     const FIREBASE_STORAGE_IMAGES_PATH = 'project_images/';
+
+    const ADDRESS_TYPE_HOME = AddressType::HOME;
+    const ADDRESS_TYPE_OFFICE = AddressType::OFFICE;
 
     private function __construct()
     {
