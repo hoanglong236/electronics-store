@@ -6,14 +6,14 @@
             <div class="row">
                 <div class="col-md-8">
                     @include('pages.account.components.customer-address-table', [
-                        'customerAddresses' => $data['customerAddresses'],
+                        'customerAddresses' => $data['customer']['addresses'],
                     ])
                     @include('shared.components.action-results-alert')
                     @include('pages.account.components.add-address-form')
                 </div>
                 <div class="col-md-4">
                     @include('pages.account.components.customer-info-table', [
-                        'customer' => Auth::guard('customer')->user(),
+                        'customerInfo' => $data['customer']['mainInfo'],
                     ])
                 </div>
             </div>

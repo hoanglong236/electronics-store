@@ -212,6 +212,9 @@ return [
         'Constants' => App\Common\Constants::class,
         'OrderStatusConstants' => App\ModelConstants\OrderStatusConstants::class,
         'FirebaseStorageService' => App\Services\FirebaseStorageService::class,
+
+        'CommonConstants' => App\Constants\CommonConstants::class,
+        'MessageConstants' => App\Constants\MessageConstants::class,
     ])->toArray(),
 
 ];

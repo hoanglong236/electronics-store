@@ -9,22 +9,22 @@
         <tr>
             <th scope="row">1</th>
             <td>ID</td>
-            <td>{{ $customer->id }}</td>
+            <td>{{ $customerInfo->id }}</td>
         </tr>
         <tr>
             <th scope="row">2</th>
             <td>Name</td>
-            <td>{{ $customer->name }}</td>
+            <td>{{ $customerInfo->name }}</td>
         </tr>
         <tr>
             <th scope="row">3</th>
             <td>Phone</td>
-            <td>{{ $customer->phone }}</td>
+            <td>{{ $customerInfo->phone }}</td>
         </tr>
         <tr>
             <th scope="row">4</th>
             <td>Email</td>
-            <td>{{ $customer->email }}</td>
+            <td>{{ $customerInfo->email }}</td>
         </tr>
     </tbody>
 </table>

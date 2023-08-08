@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class CommonService
@@ -38,5 +39,10 @@ class CommonService
         }
 
         return $categoryTree;
+    }
+
+    public function getCurrentLoggedInCustomer()
+    {
+        return Auth::guard('customer')->user();
     }
 }

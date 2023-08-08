@@ -1,9 +1,9 @@
-@if (Session::has(Constants::ACTION_ERROR))
+@if (Session::has(CommonConstants::ACTION_ERROR))
     <script>
-        alert('{{ Session::get(Constants::ACTION_ERROR) }}');
+        alert('{{ Session::get(CommonConstants::ACTION_ERROR) }}');
     </script>
-@elseif (Session::has(Constants::ACTION_SUCCESS))
+@elseif (Session::has(CommonConstants::ACTION_SUCCESS))
     <script>
-        alert('{{ Session::get(Constants::ACTION_SUCCESS) }}');
+        alert('{{ Session::get(CommonConstants::ACTION_SUCCESS) }}');
     </script>
 @endif

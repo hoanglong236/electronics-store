@@ -2,119 +2,112 @@
 
 namespace App\Http\Controllers;
 
-use App\Common\Constants;
-use App\Http\Requests\AddCustomerAddressRequest;
+use App\Constants\CommonConstants;
+use App\Constants\MessageConstants;
+use App\Http\Requests\CustomerAddressRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
-use App\Services\AuthAccountService;
+use App\Services\AccountService;
 use App\Services\CommonService;
-use App\Services\CustomerService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class AccountController extends Controller
 {
     private $commonService;
-    private $authAccountService;
-    private $customerService;
+    private $accountService;
 
-    public function __construct()
+    public function __construct(CommonService $commonService, AccountService $accountService)
     {
-        $this->commonService = new CommonService();
-        $this->authAccountService = new AuthAccountService();
-        $this->customerService = new CustomerService();
+        $this->commonService = $commonService;
+        $this->accountService = $accountService;
     }
 
     public function login()
     {
-        $data = [
-            'pageTitle' => 'Login',
-        ];
+        $data = [];
+        $data['pageTitle'] = 'Login';
         return view('pages.account.login-page', ['data' => $data]);
     }
 
     public function loginHandler(LoginRequest $loginRequest)
     {
         $loginProperties = $loginRequest->validated();
-        $isLoginSuccess = $this->authAccountService->login($loginProperties);
+        $isLoginSuccess = $this->accountService->login($loginProperties);
 
         if ($isLoginSuccess) {
             return redirect()->action([HomeController::class, 'index']);
         }
 
-        Session::flash(Constants::ACTION_ERROR, Constants::LOGIN_DETAIL_INVALID);
+        Session::flash(MessageConstants::ACTION_ERROR, MessageConstants::LOGIN_DETAIL_INVALID);
         return redirect()->action([AccountController::class, 'login'])->withInput();
     }
 
     public function register()
     {
-        $data = [
-            'pageTitle' => 'Register account',
-        ];
+        $data = [];
+        $data['pageTitle'] = 'Register account';
         return view('pages.account.register-page', ['data' => $data]);
     }
 
     public function registerHandler(RegisterRequest $registerRequest)
     {
         $registerProperties = $registerRequest->validated();
-        $this->authAccountService->register($registerProperties);
+        $this->accountService->register($registerProperties);
 
-        Session::flash(Constants::ACTION_SUCCESS, Constants::REGISTER_SUCCESS);
+        Session::flash(CommonConstants::ACTION_SUCCESS, MessageConstants::REGISTER_SUCCESS);
         return redirect()->action([AccountController::class, 'login']);
     }
 
     public function logout()
     {
-        $this->authAccountService->logout();
+        $this->accountService->logout();
 
-        Session::flash(Constants::ACTION_SUCCESS, Constants::LOGOUT_SUCCESS);
+        Session::flash(CommonConstants::ACTION_SUCCESS, MessageConstants::LOGOUT_SUCCESS);
         return redirect()->action([AccountController::class, 'login']);
     }
 
     public function showInfo()
     {
-        $customer = Auth::guard('customer')->user();
-        $data = [
-            'pageTitle' => 'Customer Account Information',
-            'categoryTrees' => $this->commonService->getCategoryTrees(),
-            'customerAddresses' => $this->customerService->getCustomerAddresses($customer->id),
-        ];
+        $customer = $this->commonService->getCurrentLoggedInCustomer();
+
+        $data = [];
+        $data['pageTitle'] = 'Customer Information';
+        $data['customer']['addresses'] = $this->accountService->getCustomerAddresses($customer->id);
+        $data['customer']['mainInfo'] = $customer;
+        $data['categoryTrees'] = $this->commonService->getCategoryTrees();
+
         return view('pages.account.account-info-page', ['data' => $data]);
     }
 
-    public function addCustomerAddress(AddCustomerAddressRequest $addCustomerAddressRequest)
+    public function addCustomerAddress(CustomerAddressRequest $customerAddressRequest)
     {
-        $customer = Auth::guard('customer')->user();
-        $addCustomerAddressProperties = $addCustomerAddressRequest->validated();
-        $this->customerService->addCustomerAddress($addCustomerAddressProperties, $customer->id);
+        $customer = $this->commonService->getCurrentLoggedInCustomer();
 
-        Session::flash(Constants::ACTION_SUCCESS, Constants::CREATE_SUCCESS);
+        $customerAddressProperties = $customerAddressRequest->validated();
+        $customerAddressProperties['customerId'] = $customer->id;
+        $this->accountService->addCustomerAddress($customerAddressProperties);
+
+        Session::flash(CommonConstants::ACTION_SUCCESS, MessageConstants::CREATE_SUCCESS);
         return redirect()->action([AccountController::class, 'showInfo']);
     }
 
-    public function changeDefaultCustomerAddress($customerAddressId)
+    public function deleteCustomerAddress(int $customerAddressId)
     {
-        $customer = Auth::guard('customer')->user();
-        $isSuccess = $this->customerService->changeDefaultCustomerAddress($customerAddressId, $customer->id);
+        $this->accountService->deleteCustomerAddressById($customerAddressId);
 
-        if ($isSuccess) {
-            Session::flash(Constants::ACTION_SUCCESS, Constants::UPDATE_SUCCESS);
-        } else {
-            Session::flash(Constants::ACTION_ERROR, Constants::CHANGE_DEFAULT_ADDRESS_FAILURE);
-        }
+        Session::flash(CommonConstants::ACTION_SUCCESS, MessageConstants::DELETE_SUCCESS);
         return redirect()->action([AccountController::class, 'showInfo']);
     }
 
-    public function deleteCustomerAddress($customerAddressId)
+    public function changeDefaultCustomerAddress(int $newAddressId)
     {
-        $customer = Auth::guard('customer')->user();
-        $isSuccess = $this->customerService->deleteCustomerAddress($customerAddressId, $customer->id);
+        $customer = $this->commonService->getCurrentLoggedInCustomer();
+        $isSuccess = $this->accountService->changeDefaultCustomerAddress($newAddressId, $customer->id);
 
         if ($isSuccess) {
-            Session::flash(Constants::ACTION_SUCCESS, Constants::DELETE_SUCCESS);
+            Session::flash(CommonConstants::ACTION_SUCCESS, MessageConstants::UPDATE_SUCCESS);
         } else {
-            Session::flash(Constants::ACTION_ERROR, Constants::DELETE_CUSTOMER_ADDRESS_FAILURE);
+            Session::flash(CommonConstants::ACTION_ERROR, MessageConstants::OPERATION_FAILURE);
         }
         return redirect()->action([AccountController::class, 'showInfo']);
     }

@@ -6,7 +6,7 @@ use App\ModelConstants\AddressType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class AddCustomerAddressRequest extends FormRequest
+class CustomerAddressRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
