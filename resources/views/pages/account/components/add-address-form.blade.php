@@ -54,8 +54,8 @@
                         <div class="form-group">
                             <label for="addressTypeSelect" class="form-label">Type(*)</label>
                             <select id="addressTypeSelect" class="form-control" name="addressType">
-                                <option value="{{ Constants::ADDRESS_TYPE_HOME }}">{{ Constants::ADDRESS_TYPE_HOME }}</option>
-                                <option value="{{ Constants::ADDRESS_TYPE_OFFICE }}">{{ Constants::ADDRESS_TYPE_OFFICE }}</option>
+                                <option value="Home">Home</option>
+                                <option value="Office">Office</option>
                             </select>
                             @error('defaultFlag')
                                 <div class="alert alert-danger mt-1" role="alert">{{ $message }}</div>

@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\ModelConstants\PaymentMethodConstants;
 use App\Models\Cart;
+use App\Models\Constants\PaymentMethodConstants;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;

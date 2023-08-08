@@ -17,9 +17,8 @@
                 <td>${{ number_format($customOrder->total) }}</td>
                 <td>
                     <span @class([
-                        'complete-status' =>
-                            $customOrder->status === OrderStatusConstants::COMPLETED,
-                        'cancel-status' => $customOrder->status === OrderStatusConstants::CANCELLED,
+                        'complete-status' => $customOrder->status === 'Completed',
+                        'cancel-status' => $customOrder->status === 'Cancelled',
                     ])>
                         {{ $customOrder->status }}
                     </span>
@@ -28,9 +27,7 @@
                 <td>
                     <a href="{{ route('order.details', $customOrder->id) }}"
                         class="btn btn-primary btn-sm mb-2">Details</a>
-                    @if (
-                        $customOrder->status !== OrderStatusConstants::COMPLETED &&
-                            $customOrder->status !== OrderStatusConstants::CANCELLED)
+                    @if ($customOrder->status !== 'Completed' && $customOrder->status !== 'Cancelled')
                         <form action="{{ route('order.cancel', $customOrder->id) }}"
                             onsubmit="return confirm('Are you sure you want to cancel your order?')" method="post">
                             @csrf

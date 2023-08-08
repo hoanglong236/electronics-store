@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\ModelConstants\AddressType;
+use App\Models\Constants\AddressType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 

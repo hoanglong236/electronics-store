@@ -5,11 +5,10 @@ namespace App\Http\Controllers;
 use App\Common\Constants;
 use App\Http\Requests\AddProductToCartRequest;
 use App\Http\Requests\UpdateCartItemQuantityRequest;
-use App\ModelConstants\PaymentMethodConstants;
+use App\Models\Constants\PaymentMethodConstants;
 use App\Services\CartService;
 use App\Services\CommonService;
 use App\Services\CustomerService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 

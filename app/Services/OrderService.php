@@ -2,12 +2,11 @@
 
 namespace App\Services;
 
-use App\ModelConstants\OrderStatusConstants;
 use App\Models\CartItem;
+use App\Models\Constants\OrderStatusConstants;
 use App\Models\Order;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class OrderService
 {

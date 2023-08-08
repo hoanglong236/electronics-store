@@ -210,7 +210,6 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Constants' => App\Common\Constants::class,
-        'OrderStatusConstants' => App\ModelConstants\OrderStatusConstants::class,
         'FirebaseStorageService' => App\Services\FirebaseStorageService::class,
 
         'CommonConstants' => App\Constants\CommonConstants::class,
