@@ -2,43 +2,40 @@
 
 namespace App\Services;
 
-use App\Models\Category;
+use App\Constants\ConfigConstants;
+use App\Repositories\ICommonRepository;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 class CommonService
 {
-    public function getCategoryTrees()
+    private $commonRepository;
+
+    public function __construct(ICommonRepository $iCommonRepository)
     {
-        $categories = Category::where([
-            'delete_flag' => false,
-            'parent_id' => null,
-        ])->get();
-
-        $categoryTrees = [];
-
-        foreach ($categories as $category) {
-            array_push($categoryTrees, $this->getCategoryTree($category));
-        }
-
-        return $categoryTrees;
+        $this->commonRepository = $iCommonRepository;
     }
 
     private function getCategoryTree($category)
     {
-        $categoryChildren = Category::where([
-            'delete_flag' => false,
-            'parent_id' => $category->id,
-        ])->get();
-
         $categoryTree = $category->getAttributes();
         $categoryTree['children'] = [];
 
-        foreach ($categoryChildren as $categoryChild) {
-            array_push($categoryTree['children'], $this->getCategoryTree($categoryChild));
+        $childCategories = $this->commonRepository->getChildCategoriesByParentCategoryId($category->parent_id);
+        foreach ($childCategories as $childCategory) {
+            $categoryTree['children'][] = $this->getCategoryTree($childCategory);
         }
-
         return $categoryTree;
+    }
+
+    public function getCategoryTrees()
+    {
+        $categoryTrees = [];
+        $categories = $this->commonRepository->getRootCategories(ConfigConstants::NUMBER_ROOT_CATEGORIES);
+
+        foreach ($categories as $category) {
+            $categoryTrees[] = $this->getCategoryTree($category);
+        }
+        return $categoryTrees;
     }
 
     public function getCurrentLoggedInCustomer()
