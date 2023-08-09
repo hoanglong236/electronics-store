@@ -20,7 +20,7 @@ class CommonService
         $categoryTree = $category->getAttributes();
         $categoryTree['children'] = [];
 
-        $childCategories = $this->commonRepository->getChildCategoriesByParentCategoryId($category->parent_id);
+        $childCategories = $this->commonRepository->getChildCategoriesByParentCategoryId($category->id);
         foreach ($childCategories as $childCategory) {
             $categoryTree['children'][] = $this->getCategoryTree($childCategory);
         }

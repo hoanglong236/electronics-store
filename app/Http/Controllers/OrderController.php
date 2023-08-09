@@ -7,20 +7,19 @@ use App\Http\Requests\PlaceOrderRequest;
 use App\Services\CartService;
 use App\Services\CommonService;
 use App\Services\OrderService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
-    private $commonService;
     private $orderService;
+    private $commonService;
     private $cartService;
 
-    public function __construct()
+    public function __construct(CommonService $commonService)
     {
-        $this->commonService = new CommonService();
         $this->orderService = new OrderService();
+        $this->commonService = $commonService;
         $this->cartService = new CartService();
     }
 

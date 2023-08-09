@@ -4,17 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Services\CommonService;
 use App\Services\HomeService;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     private $commonService;
     private $homeService;
 
-    public function __construct()
+    public function __construct(CommonService $commonService)
     {
-        $this->commonService = new CommonService();
         $this->homeService = new HomeService();
+        $this->commonService = $commonService;
     }
 
     public function index()

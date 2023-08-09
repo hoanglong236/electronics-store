@@ -7,17 +7,16 @@ use App\DataFilterConstants\ProductSorterConstants;
 use App\Http\Requests\ProductSearchRequest;
 use App\Services\CommonService;
 use App\Services\ProductService;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    private $commonService;
     private $productService;
+    private $commonService;
 
-    public function __construct()
+    public function __construct(CommonService $commonService)
     {
-        $this->commonService = new CommonService();
         $this->productService = new ProductService();
+        $this->commonService = $commonService;
     }
 
     public function findByCategorySlug($categorySlug)

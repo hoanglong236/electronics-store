@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Session;
 
 class AccountController extends Controller
 {
-    private $commonService;
     private $accountService;
+    private $commonService;
 
-    public function __construct(CommonService $commonService, AccountService $accountService)
+    public function __construct(AccountService $accountService, CommonService $commonService)
     {
-        $this->commonService = $commonService;
         $this->accountService = $accountService;
+        $this->commonService = $commonService;
     }
 
     public function login()

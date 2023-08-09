@@ -14,14 +14,14 @@ use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
-    private $commonService;
     private $cartService;
+    private $commonService;
     private $customerService;
 
-    public function __construct()
+    public function __construct(CommonService $commonService)
     {
-        $this->commonService = new CommonService();
         $this->cartService = new CartService();
+        $this->commonService = $commonService;
         $this->customerService = new CustomerService();
     }
 
