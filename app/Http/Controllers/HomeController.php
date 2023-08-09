@@ -10,9 +10,9 @@ class HomeController extends Controller
     private $commonService;
     private $homeService;
 
-    public function __construct(CommonService $commonService)
+    public function __construct(HomeService $homeService, CommonService $commonService)
     {
-        $this->homeService = new HomeService();
+        $this->homeService = $homeService;
         $this->commonService = $commonService;
     }
 
