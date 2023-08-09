@@ -2,36 +2,35 @@
 
 namespace App\Repositories\Concretes;
 
-use App\Common\Constants;
 use App\Models\Category;
 use App\Models\Product;
 use App\Repositories\IHomeRepository;
 
 class HomeRepository implements IHomeRepository
 {
-    public function getRandomProducts()
+    public function getRandomProducts(int $numberItems)
     {
         return Product::where(['delete_flag' => false])
             ->inRandomOrder()
-            ->limit(Constants::TOP_PRODUCT_COUNT)
+            ->limit($numberItems)
             ->get();
     }
 
-    public function getTopCategories()
+    public function getTopCategories(int $numberItems)
     {
         return Category::where(['delete_flag' => false])
-            ->limit(Constants::TOP_CATEGORY_COUNT)
+            ->limit($numberItems)
             ->get();
     }
 
-    public function getProductsByCategoryId($categoryId)
+    public function getProductsByCategoryId(int $categoryId, int $numberItems)
     {
         return Product::where([
             'delete_flag' => false,
             'category_id' => $categoryId
         ])
             ->orderBy('id')
-            ->limit(Constants::TOP_PRODUCT_COUNT)
+            ->limit($numberItems)
             ->get();
     }
 }
