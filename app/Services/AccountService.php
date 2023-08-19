@@ -16,18 +16,18 @@ class AccountService
         $this->accountRepository = $iAccountRepository;
     }
 
-    public function register($registerProperties)
+    public function register(array $registerProps)
     {
-        $registerProperties['password'] = Hash::make($registerProperties['password']);
-        $customer = $this->accountRepository->createCustomer($registerProperties);
+        $registerProps['password'] = Hash::make($registerProps['password']);
+        $customer = $this->accountRepository->createCustomer($registerProps);
         $this->accountRepository->createCustomerCart($customer->id);
     }
 
-    public function login($loginProperties)
+    public function login(array $loginProps)
     {
         return Auth::guard('customer')->attempt([
-            'email' => $loginProperties['email'],
-            'password' => $loginProperties['password'],
+            'email' => $loginProps['email'],
+            'password' => $loginProps['password'],
             'disable_flag' => false,
             'delete_flag' => false,
         ]);
@@ -40,21 +40,16 @@ class AccountService
         Session::regenerateToken();
     }
 
-    public function getCustomerAddresses(int $customerId)
-    {
-        return $this->accountRepository->getCustomerAddressesByCustomerId($customerId);
-    }
-
-    public function addCustomerAddress(array $customerAddressProperties)
+    public function addCustomerAddress(array $customerAddressProps)
     {
         $createAttributes = [];
-        $createAttributes['customer_id'] = $customerAddressProperties['customerId'];
-        $createAttributes['city'] = $customerAddressProperties['city'];
-        $createAttributes['district'] = $customerAddressProperties['district'];
-        $createAttributes['ward'] = $customerAddressProperties['ward'];
-        $createAttributes['specific_address'] = $customerAddressProperties['specificAddress'];
-        $createAttributes['address_type'] = $customerAddressProperties['addressType'];
-        $createAttributes['default_flag'] = $customerAddressProperties['defaultFlag'];
+        $createAttributes['customer_id'] = $customerAddressProps['customerId'];
+        $createAttributes['city'] = $customerAddressProps['city'];
+        $createAttributes['district'] = $customerAddressProps['district'];
+        $createAttributes['ward'] = $customerAddressProps['ward'];
+        $createAttributes['specific_address'] = $customerAddressProps['specificAddress'];
+        $createAttributes['address_type'] = $customerAddressProps['addressType'];
+        $createAttributes['default_flag'] = $customerAddressProps['defaultFlag'];
 
         $this->accountRepository->addCustomerAddress($createAttributes);
     }

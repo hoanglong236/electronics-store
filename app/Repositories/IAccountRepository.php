@@ -12,6 +12,5 @@ interface IAccountRepository
     public function updateCustomerAddress(array $attributes, int $addressId);
     public function deleteCustomerAddressById(int $addressId);
 
-    public function getCustomerAddressesByCustomerId(int $customerId);
     public function changeDefaultCustomerAddress(int $newDefaultAddressId, int $customerId);
 }

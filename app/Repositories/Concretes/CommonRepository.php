@@ -2,7 +2,9 @@
 
 namespace App\Repositories\Concretes;
 
+use App\Models\Cart;
 use App\Models\Category;
+use App\Models\CustomerAddress;
 use App\Repositories\ICommonRepository;
 
 class CommonRepository implements ICommonRepository
@@ -26,5 +28,17 @@ class CommonRepository implements ICommonRepository
         ])
             ->orderBy('id')
             ->get();
+    }
+
+    public function getCustomerAddressesByCustomerId(int $customerId)
+    {
+        return CustomerAddress::where(['customer_id' => $customerId])->get();
+    }
+
+    public function getCartIdByCustomerId(int $customerId)
+    {
+        return Cart::where('customer_id', $customerId)
+            ->first()
+            ->id;
     }
 }

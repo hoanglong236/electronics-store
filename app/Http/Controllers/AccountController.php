@@ -31,10 +31,12 @@ class AccountController extends Controller
 
     public function loginHandler(LoginRequest $loginRequest)
     {
-        $loginProperties = $loginRequest->validated();
-        $isLoginSuccess = $this->accountService->login($loginProperties);
+        $loginProps = $loginRequest->validated();
+        $isLoginSuccess = $this->accountService->login($loginProps);
 
         if ($isLoginSuccess) {
+            $customer = $this->commonService->getCurrentLoggedInCustomer();
+            session(['CART_ID' => $this->commonService->getCartIdByCustomerId($customer->id)]);
             return redirect()->action([HomeController::class, 'index']);
         }
 
@@ -51,8 +53,8 @@ class AccountController extends Controller
 
     public function registerHandler(RegisterRequest $registerRequest)
     {
-        $registerProperties = $registerRequest->validated();
-        $this->accountService->register($registerProperties);
+        $registerProps = $registerRequest->validated();
+        $this->accountService->register($registerProps);
 
         Session::flash(CommonConstants::ACTION_SUCCESS, MessageConstants::REGISTER_SUCCESS);
         return redirect()->action([AccountController::class, 'login']);
@@ -71,10 +73,10 @@ class AccountController extends Controller
         $customer = $this->commonService->getCurrentLoggedInCustomer();
 
         $data = [];
-        $data['pageTitle'] = 'Customer Information';
-        $data['customer']['addresses'] = $this->accountService->getCustomerAddresses($customer->id);
         $data['customer']['mainInfo'] = $customer;
+        $data['customer']['addresses'] = $this->commonService->getCustomerAddressesByCustomerId($customer->id);
         $data['categoryTrees'] = $this->commonService->getCategoryTrees();
+        $data['pageTitle'] = 'Customer Information';
 
         return view('pages.account.account-info-page', ['data' => $data]);
     }
@@ -83,9 +85,9 @@ class AccountController extends Controller
     {
         $customer = $this->commonService->getCurrentLoggedInCustomer();
 
-        $customerAddressProperties = $customerAddressRequest->validated();
-        $customerAddressProperties['customerId'] = $customer->id;
-        $this->accountService->addCustomerAddress($customerAddressProperties);
+        $customerAddressProps = $customerAddressRequest->validated();
+        $customerAddressProps['customerId'] = $customer->id;
+        $this->accountService->addCustomerAddress($customerAddressProps);
 
         Session::flash(CommonConstants::ACTION_SUCCESS, MessageConstants::CREATE_SUCCESS);
         return redirect()->action([AccountController::class, 'showInfo']);

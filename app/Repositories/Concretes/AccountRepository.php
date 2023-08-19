@@ -59,11 +59,6 @@ class AccountRepository implements IAccountRepository
         return false;
     }
 
-    public function getCustomerAddressesByCustomerId(int $customerId)
-    {
-        return CustomerAddress::where(['customer_id' => $customerId])->get();
-    }
-
     public function changeDefaultCustomerAddress(int $newDefaultAddressId, int $customerId)
     {
         $oldDefaultAddress = CustomerAddress::where([
